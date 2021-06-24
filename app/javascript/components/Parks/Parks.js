@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import Park from './Park'
 
 const Parks = () => {
   const [ parks, setParks ] = useState([])
@@ -15,16 +16,24 @@ const Parks = () => {
       .catch((res) => console.log(res))
   }, [parks.length])
 
-  const list = parks.map((item) => {
+  const grid = parks.map((item) => {
     return (
-      <li key={item.attributes.name}>{item.attributes.name}</li>
+      <Park
+        key={item.attributes.name}
+        attributes={item.attributes}
+      />
     )
   })
 
   return (
-    <div>
-      <div>This is the Parks#index view for our App</div>
-      <ul>{list}</ul>
+    <div className="home">
+      <div className="header">
+        <h1>National Parks Hub</h1>
+      </div>
+      <div className="subheader">Get out and hike!</div>
+      <div className="grid">
+        <ul>{grid}</ul>
+      </div>
     </div>
   )
 }
