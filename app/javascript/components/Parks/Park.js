@@ -1,17 +1,43 @@
 import React from 'react'
 import { BrowserRouter as Router, Link } from 'react-router-dom'
+import styled from 'styled-components'
+
+const Card = styled.div`
+  border: 1px solid #efefef;
+  background: #fff;
+`
+
+const ParkName = styled.div`
+  padding: 20px 0 10px 0;
+  font-weight: bold;
+`
+
+const LinkWrapper = styled.div`
+  margin: 30px 0 20px 0;
+  height: 50px;
+
+  a {
+    color: #fff;
+    background: #000;
+    border-radius: 3px;
+    padding: 10px 50px;
+    border: 1px solid #000;
+    width: 100%;
+    text-decoration: none;
+  }
+`
 
 const Park = (props) => {
   return (
-    <div className="card">
-      <div className="park-name">{props.attributes.name}</div>
+    <Card>
+      <ParkName>{props.attributes.name}</ParkName>
       <div className="park-lat">{props.attributes.latitude}</div>
       <div className="park-lon">{props.attributes.longitude}</div>
       <div className="park-rating">{props.attributes.avg_rating}</div>
-      <div className="park-link">
+      <LinkWrapper>
         <Link to={`/parks/${props.attributes.park_code}`}>View Park</Link>
-      </div>
-    </div>
+      </LinkWrapper>
+    </Card>
   )
 }
 
