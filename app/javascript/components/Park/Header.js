@@ -8,9 +8,9 @@ const Header = (props) => {
     <div className="wrapper">
       <h1>Park Name</h1>
       <div>
-        <div className="totalReviews"></div>
+        <div className="totalReviews">{total} User Reviews</div>
         <div className="starRating"></div>
-        <div className="totalOutOf">3 out of 5</div>
+        <div className="totalOutOf">{avg_rating} out of 5</div>
       </div>
     </div>
   )
