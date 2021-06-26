@@ -1,18 +1,35 @@
 import React from 'react'
+import styled from 'styled-components'
+
+const Wrapper = styled.div`
+  padding: 50px 100px 50px 0;
+  font-size: 30px;
+`
+
+const TotalReviews = styled.div`
+  font-size: 18px;
+  padding: 10px 0;
+`
+
+const TotalOutOf = styled.div`
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 0;
+`
 
 const Header = (props) => {
   const { name, avg_rating } = props.attributes
   const total = props.reviews.length
 
   return (
-    <div className="wrapper">
+    <Wrapper>
       <h1>Park Name</h1>
       <div>
-        <div className="totalReviews">{total} User Reviews</div>
+        <TotalReviews>{total} User Reviews</TotalReviews>
         <div className="starRating"></div>
-        <div className="totalOutOf">{avg_rating} out of 5</div>
+        <TotalOutOf>{avg_rating} out of 5</TotalOutOf>
       </div>
-    </div>
+    </Wrapper>
   )
 }
 
