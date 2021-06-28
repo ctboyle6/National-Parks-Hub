@@ -41,7 +41,11 @@ const Park = (props) => {
   }, [])
 
   const handleChange = (event) => {
-    console.log('name:', event.target.name, 'value:', event.target.value)
+    // console.log('name:', event.target.name, 'value:', event.target.value)
+
+    setReview({ ...review, [event.target.name]: event.target.value })
+
+    console.log('review:', review)
   }
 
   const handleSubmit = (event) => {
