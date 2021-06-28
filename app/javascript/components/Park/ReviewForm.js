@@ -6,10 +6,10 @@ const ReviewForm = (props) => {
       <form action="">
         <div>Have an experience with [Park Name]? Share your experience!</div>
         <div className="field">
-          <input type="text" name="title" placeholder="Review Title">
+          <input type="text" name="title" placeholder="Review Title"/>
         </div>
         <div className="field">
-          <input type="text" name="description" placeholder="Review Description">
+          <input type="text" name="description" placeholder="Review Description"/>
         </div>
         <div className="field">
           <div className="rating-container">

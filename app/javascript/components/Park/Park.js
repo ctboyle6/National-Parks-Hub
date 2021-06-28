@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Fragment } from 'react'
 import axios from 'axios'
 import Header from './Header'
 import ReviewForm from './ReviewForm'
@@ -42,21 +42,23 @@ const Park = (props) => {
 
   return (
     <Wrapper>
-      <Column>
-        <div className="main">
-          {
-            loaded &&
-            <Header
-              attributes={park.data.attributes}
-              reviews={park.included}
-            />
-          }
-          <div className="reviews"></div>
-        </div>
-      </Column>
-      <Column>
-        <div className="review-form">[Review Form goes here]</div>
-      </Column>
+      {
+        loaded &&
+        <Fragment>
+          <Column>
+            <Main>
+                <Header
+                  attributes={park.data.attributes}
+                  reviews={park.included}
+                />
+              <div className="reviews"></div>
+            </Main>
+          </Column>
+          <Column>
+            <ReviewForm/>
+          </Column>
+        </Fragment>
+      }
     </Wrapper>
   )
 }
