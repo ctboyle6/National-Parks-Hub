@@ -60,7 +60,7 @@ const Park = (props) => {
     const park_id = park.data.id
     axios.post('/api/v1/reviews', { review, park_id })
       .then( res => {
-        const included = [...park.included, res.data]
+        const included = [...park.included, res.data.data]
         setPark({ ...park, included })
         setReview({ title: '', description: '', rating: 0 })
       })
@@ -71,14 +71,17 @@ const Park = (props) => {
     setReview({...review, rating})
   }
 
-  const reviews = park.included.map((review, index) => {
-    return (
-      <Review
-        key={index}
-        attributes={review.attributes}
-      />
-    )
-  })
+  let reviews
+  if (loaded && park.included) {
+    reviews = park.included.map((review, index) => {
+      return (
+        <Review
+          key={index}
+          attributes={review.attributes}
+        />
+      )
+    })
+  }
 
   return (
     <Wrapper>
