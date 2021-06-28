@@ -40,6 +40,14 @@ const Park = (props) => {
       .catch( res => console.log(res))
   }, [])
 
+  const handleChange = (event) => {
+    console.log('name:', event.target.name, 'value:', event.target.value)
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+  }
+
   return (
     <Wrapper>
       {
@@ -55,7 +63,12 @@ const Park = (props) => {
             </Main>
           </Column>
           <Column>
-            <ReviewForm/>
+            <ReviewForm
+              handleChange={handleChange}
+              handleSubmit={handleSubmit}
+              attributes={park.data.attributes}
+              review={review}
+            />
           </Column>
         </Fragment>
       }
