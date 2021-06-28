@@ -23,7 +23,7 @@ const Header = (props) => {
 
   return (
     <Wrapper>
-      <h1>Park Name</h1>
+      <h1>{name}</h1>
       <div>
         <TotalReviews>{total} User Reviews</TotalReviews>
         <div className="starRating"></div>
