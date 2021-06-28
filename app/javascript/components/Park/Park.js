@@ -2,6 +2,7 @@ import React, { useState, useEffect, Fragment } from 'react'
 import axios from 'axios'
 import Header from './Header'
 import ReviewForm from './ReviewForm'
+import Review from './Review'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
@@ -70,6 +71,15 @@ const Park = (props) => {
     setReview({...review, rating})
   }
 
+  const reviews = park.included.map((review, index) => {
+    return (
+      <Review
+        key={index}
+        attributes={review.attributes}
+      />
+    )
+  })
+
   return (
     <Wrapper>
       {
@@ -81,7 +91,7 @@ const Park = (props) => {
                   attributes={park.data.attributes}
                   reviews={park.included}
                 />
-              <div className="reviews"></div>
+              {reviews}
             </Main>
           </Column>
           <Column>
