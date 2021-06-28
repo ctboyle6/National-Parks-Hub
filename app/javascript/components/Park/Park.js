@@ -62,6 +62,10 @@ const Park = (props) => {
       .catch( res => {})
   }
 
+  const setRating = (rating, event) => {
+    setReview({...review, rating})
+  }
+
   return (
     <Wrapper>
       {
@@ -80,6 +84,7 @@ const Park = (props) => {
             <ReviewForm
               handleChange={handleChange}
               handleSubmit={handleSubmit}
+              setRating={setRating}
               attributes={park.data.attributes}
               review={review}
             />
