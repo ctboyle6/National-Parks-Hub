@@ -53,9 +53,9 @@ const Field = styled.div`
     min-height: 50px;
     border-radius: 4px;
     border: 1px solid #e6e6e6;
-    margin: 12px 0;
+    margin: 0 0 12px 0;
     padding: 12px;
-    width: 96%;
+    width: 100%;
   }
 
   textarea {

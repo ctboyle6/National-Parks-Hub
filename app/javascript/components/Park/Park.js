@@ -15,6 +15,10 @@ const Column = styled.div`
   height: 100vh;
   overflow: scroll;
 
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
   &:last-child {
     background: #000;
   }
