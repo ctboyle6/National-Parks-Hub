@@ -3,6 +3,7 @@ import axios from 'axios'
 import Header from './Header'
 import ReviewForm from './ReviewForm'
 import Review from './Review'
+import Weather from './Weather'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
@@ -94,6 +95,7 @@ const Park = (props) => {
                   attributes={park.data.attributes}
                   reviews={park.included}
                 />
+                <div className="weather">[insert weather here]</div>
               {reviews}
             </Main>
           </Column>
