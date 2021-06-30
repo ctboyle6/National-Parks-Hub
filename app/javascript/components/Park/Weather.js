@@ -4,7 +4,8 @@ const Weather = (props) => {
   const { coord, main, wind, clouds, sys, name, timezone } = props.weather
 
   const convertDate = (timestamp) => {
-    return new Date(timestamp * 1000)
+    const date = new Date(timestamp * 1000);
+    return date.toLocaleString("en-US")
   }
 
   return (
@@ -26,8 +27,8 @@ const Weather = (props) => {
         <div className="wind-speed">Wind Speed: {wind.speed}</div>
       </div>
       <div className="time">
-        <div className="sunrise">Sunrise: {convertDate(sys.sunrise + timezone).toLocaleDateString("en-US")}</div>
-        <div className="sunset">Sunset: {convertDate(sys.sunset + timezone).toLocaleDateString("en-US")}</div>
+        <div className="sunrise">Sunrise: {convertDate(sys.sunrise)}</div>
+        <div className="sunset">Sunset: {convertDate(sys.sunset)}</div>
       </div>
     </div>
   )
