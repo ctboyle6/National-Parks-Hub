@@ -26,7 +26,7 @@ const Weather = (props) => {
   return (
     <Wrapper>
       <Section>
-        <i class="fas fa-map-marked-alt"></i>
+        <i className="fas fa-map-marked-alt"></i>
         <p>
           Latitude: {coord.lat}°
           <br></br>
@@ -34,7 +34,7 @@ const Weather = (props) => {
         </p>
       </Section>
       <Section>
-        <i class="fas fa-temperature-high"></i>
+        <i className="fas fa-temperature-high"></i>
         <div className="temp">Temperature: {main.temp}°F</div>
         <div className="feels-like">Feels Like: {main.feels_like}°F</div>
         <div className="temp-min">Temp Low: {main.temp_min}°F</div>
@@ -43,12 +43,12 @@ const Weather = (props) => {
         <div className="humidity">Humidity: {main.humidity}%</div>
       </Section>
       <Section>
-        <i class="fas fa-wind"></i>
+        <i className="fas fa-wind"></i>
         <div className="wind-dir">Wind Direction: {wind.deg}°</div>
         <div className="wind-speed">Wind Speed: {wind.speed}mph</div>
       </Section>
       <Section>
-        <i class="fas fa-sun"></i>
+        <i className="fas fa-sun"></i>
         <div className="sunrise">Sunrise: {convertDate(sys.sunrise)}</div>
         <div className="sunset">Sunset: {convertDate(sys.sunset)}</div>
       </Section>
