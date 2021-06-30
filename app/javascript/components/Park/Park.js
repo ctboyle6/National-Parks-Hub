@@ -46,7 +46,7 @@ const Park = (props) => {
       })
       .catch( res => console.log(res))
 
-    axios.get("https://api.openweathermap.org/data/2.5/weather?lat=44.3386&lon=-68.2733&appid=e9125379e1c25255938d7f5cadcc1a3a&units=imperial")
+    axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=44.3386&lon=-68.2733&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=imperial`)
       .then( res => {
         setWeather(res.data)
         setLoaded(true)
