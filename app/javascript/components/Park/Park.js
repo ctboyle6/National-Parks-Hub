@@ -35,6 +35,15 @@ const Park = (props) => {
   const [loaded, setLoaded] = useState(false)
   const [weather, setWeather] = useState({})
 
+  const getWeather = (coordinates) => {
+    axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coordinates.data.attributes.latitude}&lon=${coordinates.data.attributes.longitude}&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=imperial`)
+      .then( res => {
+        setWeather(res.data)
+        setLoaded(true)
+      })
+      .catch( res => console.log('caught second'))
+  }
+
   useEffect(() => {
     const code = props.match.params.park_code
     const url = `/api/v1/parks/${code}`
@@ -43,16 +52,18 @@ const Park = (props) => {
       .then( res => {
         setPark(res.data)
         // setLoaded(true)
+        if (res.data) {
+          getWeather(res.data)
+        }
+        debugger
       })
-      .catch( res => console.log(res))
-
-    axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=44.3386&lon=-68.2733&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=imperial`)
-      .then( res => {
-        setWeather(res.data)
-        setLoaded(true)
-      })
-      .catch( res => console.log(res))
+      .catch( res => console.log('caught first'))
   }, [])
+
+  // useEffect(() => {
+  //   console.log(park)
+  //   debugger
+  // }, [park])
 
   const handleChange = (event) => {
     // console.log('name:', event.target.name, 'value:', event.target.value)
