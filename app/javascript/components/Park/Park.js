@@ -33,6 +33,7 @@ const Park = (props) => {
   const [park, setPark] = useState({})
   const [review, setReview] = useState({})
   const [loaded, setLoaded] = useState(false)
+  const [weather, setWeather] = useState({})
 
   useEffect(() => {
     const code = props.match.params.park_code
@@ -41,6 +42,13 @@ const Park = (props) => {
     axios.get(url)
       .then( res => {
         setPark(res.data)
+        // setLoaded(true)
+      })
+      .catch( res => console.log(res))
+
+    axios.get("https://api.openweathermap.org/data/2.5/weather?lat=44.3386&lon=-68.2733&appid=e9125379e1c25255938d7f5cadcc1a3a&units=imperial")
+      .then( res => {
+        setWeather(res.data)
         setLoaded(true)
       })
       .catch( res => console.log(res))
@@ -48,7 +56,6 @@ const Park = (props) => {
 
   const handleChange = (event) => {
     // console.log('name:', event.target.name, 'value:', event.target.value)
-
     setReview({ ...review, [event.target.name]: event.target.value })
   }
 
@@ -95,7 +102,9 @@ const Park = (props) => {
                   attributes={park.data.attributes}
                   reviews={park.included}
                 />
-                <div className="weather">[insert weather here]</div>
+                <Weather
+                  weather={weather}
+                />
               {reviews}
             </Main>
           </Column>
