@@ -10,16 +10,20 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 // Redux
 import { Provider } from 'react-redux'
-import { createStore, combineReducers } from 'redux'
+import { createStore, combineReducers, applyMiddleware } from 'redux'
 import parksReducer  from '../reducers/parks_reducer'
+import { logger } from 'redux-logger'
+import reduxPromise from 'redux-promise'
 
 const reducers = combineReducers({
   parks: parksReducer
 })
 
+const middlewares = applyMiddleware(logger);
+
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <Provider store={createStore(reducers)}>
+    <Provider store={createStore(reducers, {}, middlewares)}>
       <Router>
         <Route path="/" component={App}/>
       </Router>
