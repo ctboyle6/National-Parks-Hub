@@ -11,6 +11,21 @@ export const fetchParks = () => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: 'FETCH_PARKS_FAILED',
-        })
+        });
+    }
+}
+
+export const fetchPark = (park_code) => async (dispatch) => {
+    try {
+        const res = await Axios.get(`/api/v1/parks/${park_code}`)
+
+        dispatch({
+            type: 'FETCH_PARK',
+            payload: res.data,
+        });
+    } catch (error) {
+        dispatch({
+            type: 'FETCH_PARK_FAILED',
+        });
     }
 }

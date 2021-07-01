@@ -7,6 +7,10 @@ import Weather from './Weather'
 import styled from 'styled-components'
 // import { BarLoader } from 'react-spinners'
 
+// Redux
+import { fetchPark } from '../../actions'
+import { useDispatch, useSelector } from 'react-redux'
+
 const Wrapper = styled.div`
   margin-left: auto;
   margin-right: auto;

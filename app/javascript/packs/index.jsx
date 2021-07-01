@@ -12,12 +12,14 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import parksReducer  from '../reducers/parks_reducer'
+import parkReducer from '../reducers/park_reducer'
 import { logger } from 'redux-logger'
 import reduxPromise from 'redux-promise'
 import thunk from 'redux-thunk'
 
 const reducers = combineReducers({
-  parks: parksReducer
+  parks: parksReducer,
+  park: parkReducer
 })
 
 const middlewares = applyMiddleware(logger, reduxPromise, thunk);
