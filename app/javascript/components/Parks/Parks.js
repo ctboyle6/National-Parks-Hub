@@ -49,7 +49,8 @@ const Parks = () => {
   }
 
   const showParks = () => {
-    if (!!parks.parks) {
+    debugger
+    if (parks.parks) {
       return parks.parks.data.map((item) => {
         return (
           <Park
