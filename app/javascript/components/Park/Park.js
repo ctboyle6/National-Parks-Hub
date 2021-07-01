@@ -5,6 +5,7 @@ import ReviewForm from './ReviewForm'
 import Review from './Review'
 import Weather from './Weather'
 import styled from 'styled-components'
+import { BarLoader } from 'react-spinners'
 
 const Wrapper = styled.div`
   margin-left: auto;
@@ -51,22 +52,14 @@ const Park = (props) => {
     axios.get(url)
       .then( res => {
         setPark(res.data)
-        // setLoaded(true)
         if (res.data) {
           getWeather(res.data)
         }
-        debugger
       })
       .catch( res => console.log('caught first'))
   }, [])
 
-  // useEffect(() => {
-  //   console.log(park)
-  //   debugger
-  // }, [park])
-
   const handleChange = (event) => {
-    // console.log('name:', event.target.name, 'value:', event.target.value)
     setReview({ ...review, [event.target.name]: event.target.value })
   }
 
@@ -102,6 +95,14 @@ const Park = (props) => {
     })
   }
 
+  // if (!loaded) {
+  //   return (
+  //     <div>
+  //       <BarLoader loading/>
+  //     </div>
+  //   )
+  // }
+
   return (
     <Wrapper>
       {
@@ -109,6 +110,7 @@ const Park = (props) => {
         <Fragment>
           <Column>
             <Main>
+                <BarLoader loading />
                 <Header
                   attributes={park.data.attributes}
                   reviews={park.included}
