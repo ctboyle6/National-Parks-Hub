@@ -8,11 +8,22 @@ import PropTypes from 'prop-types'
 import App from '../components/App'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
+// Redux
+import { Provider } from 'react-redux'
+import { createStore, combineReducers } from 'redux'
+import parksReducer  from './reducers/parks_reducer'
+
+const reducers = combineReducers({
+  parks: parksReducer
+})
+
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <Router>
-      <Route path="/" component={App}/>
-    </Router>,
+    <Provider store={createStore(reducers)}>
+      <Router>
+        <Route path="/" component={App}/>
+      </Router>
+    </Provider>,
     document.body.appendChild(document.createElement('div')),
   )
 })
