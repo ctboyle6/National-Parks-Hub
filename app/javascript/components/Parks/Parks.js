@@ -41,7 +41,6 @@ const Parks = () => {
   const parks = useSelector((state) => state.parks);
 
   useEffect(() => {
-    // call Redux action
     fetchData();
   }, []);
 
@@ -49,14 +48,18 @@ const Parks = () => {
     dispatch(fetchParks());
   }
 
-  const grid = parks.map((item) => {
-    return (
-      <Park
-        key={item.attributes.name}
-        attributes={item.attributes}
-      />
-    )
-  })
+  const showParks = () => {
+    if (!!parks.parks) {
+      return parks.parks.data.map((item) => {
+        return (
+          <Park
+            key={item.attributes.name}
+            attributes={item.attributes}
+          />
+        )
+      })
+    }
+  }
 
   return (
     <Dashboard>
@@ -65,7 +68,7 @@ const Parks = () => {
       </Header>
       <Subheader>Get out and hike!</Subheader>
       <Grid>
-        {grid}
+        {showParks()}
       </Grid>
     </Dashboard>
   )
