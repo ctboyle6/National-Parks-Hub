@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
 import Park from './Park'
 import styled from 'styled-components'
 
 // Redux
-import { bindActionCreators } from 'redux'
-// import { connect } from 'react-redux'
 import { fetchParks } from '../../actions'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -49,7 +46,6 @@ const Parks = () => {
   }
 
   const showParks = () => {
-    debugger
     if (parks.parks) {
       return parks.parks.data.map((item) => {
         return (
@@ -75,18 +71,4 @@ const Parks = () => {
   )
 }
 
-// function mapDispatchToProps(dispatch) {
-//   return bindActionCreators(
-//     { setParks: setParks },
-//     dispatch
-//   );
-// }
-
-// function mapStateToProps(state) {
-//   return {
-//     parks: state.parks
-//   }
-// }
-
 export default Parks
-// export default connect(mapStateToProps, mapDispatchToProps)(Parks);

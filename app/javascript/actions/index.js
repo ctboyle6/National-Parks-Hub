@@ -13,13 +13,4 @@ export const fetchParks = () => async (dispatch) => {
             type: 'FETCH_PARKS_FAILED',
         })
     }
-
-    // return fetch('/api/v1/parks.json')
-    //     .then(res => res.json())
-    //     .then((data) => {
-    //         return {
-    //             type: 'SET_PARKS',
-    //             payload: data 
-    //         }
-    //     })
 }
