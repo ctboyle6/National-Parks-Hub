@@ -11,7 +11,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 // Redux
 import { Provider } from 'react-redux'
 import { createStore, combineReducers } from 'redux'
-import parksReducer  from './reducers/parks_reducer'
+import parksReducer  from '../reducers/parks_reducer'
 
 const reducers = combineReducers({
   parks: parksReducer
