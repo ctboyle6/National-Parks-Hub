@@ -5,8 +5,9 @@ import styled from 'styled-components'
 
 // Redux
 import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import { setParks } from '../../actions'
+// import { connect } from 'react-redux'
+import { fetchParks } from '../../actions'
+import { useDispatch, useSelector } from 'react-redux'
 
 const Dashboard = styled.div`
   text-align: center;
@@ -36,18 +37,17 @@ const Grid = styled.div`
 `
 
 const Parks = () => {
-  const [ parks, setParks ] = useState([])
+  const dispatch = useDispatch();
+  const parks = useSelector((state) => state.parks);
 
   useEffect(() => {
-    // Get all parks from our API
-    // update parks in our state array
+    // call Redux action
+    fetchData();
+  }, []);
 
-    axios.get('/api/v1/parks.json')
-      .then((res) => {
-        setParks(res.data.data)
-      })
-      .catch((res) => console.log(res))
-  }, [parks.length])
+  const fetchData = () => {
+    dispatch(fetchParks());
+  }
 
   const grid = parks.map((item) => {
     return (
@@ -71,17 +71,18 @@ const Parks = () => {
   )
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(
-    { setParks: setParks },
-    dispatch
-  );
-}
+// function mapDispatchToProps(dispatch) {
+//   return bindActionCreators(
+//     { setParks: setParks },
+//     dispatch
+//   );
+// }
 
-function mapStateToProps(state) {
-  return {
-    parks: state.parks
-  }
-}
+// function mapStateToProps(state) {
+//   return {
+//     parks: state.parks
+//   }
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Parks);
+export default Parks
+// export default connect(mapStateToProps, mapDispatchToProps)(Parks);
