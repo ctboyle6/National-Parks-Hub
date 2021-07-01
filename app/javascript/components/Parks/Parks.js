@@ -78,4 +78,10 @@ function mapDispatchToProps(dispatch) {
   );
 }
 
-export default connect(null, mapDispatchToProps)(Parks);
+function mapStateToProps(state) {
+  return {
+    parks: state.parks
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Parks);
