@@ -5,4 +5,16 @@ export default function(state, action) {
     }
 
     // Handle actions
+    // if (action.type === 'SET_PARKS') {
+    //     return action.payload;
+    // } else {
+    //     return state;
+    // }
+
+    switch (action.type) {
+        case 'SET_PARKS':
+            return action.payload;
+        default:
+            return state;
+    }
 }

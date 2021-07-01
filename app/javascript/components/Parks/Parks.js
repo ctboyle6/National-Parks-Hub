@@ -3,6 +3,11 @@ import axios from 'axios'
 import Park from './Park'
 import styled from 'styled-components'
 
+// Redux
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import { setParks } from '../../actions'
+
 const Dashboard = styled.div`
   text-align: center;
   max-width: 1200px;
@@ -66,4 +71,11 @@ const Parks = () => {
   )
 }
 
-export default Parks
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(
+    { setParks: setParks },
+    dispatch
+  );
+}
+
+export default connect(null, mapDispatchToProps)(Parks);
