@@ -19,7 +19,7 @@ const reducers = combineReducers({
   parks: parksReducer
 })
 
-const middlewares = applyMiddleware(logger);
+const middlewares = applyMiddleware(logger, reduxPromise);
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
