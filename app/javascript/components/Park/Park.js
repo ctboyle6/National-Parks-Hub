@@ -5,7 +5,7 @@ import ReviewForm from './ReviewForm'
 import Review from './Review'
 import Weather from './Weather'
 import styled from 'styled-components'
-import { BarLoader } from 'react-spinners'
+// import { BarLoader } from 'react-spinners'
 
 const Wrapper = styled.div`
   margin-left: auto;
@@ -110,7 +110,6 @@ const Park = (props) => {
         <Fragment>
           <Column>
             <Main>
-                <BarLoader loading />
                 <Header
                   attributes={park.data.attributes}
                   reviews={park.included}
