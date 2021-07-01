@@ -3,6 +3,12 @@ import axios from 'axios'
 import Park from './Park'
 import styled from 'styled-components'
 
+// Redux
+import { bindActionCreators } from 'redux'
+// import { connect } from 'react-redux'
+import { fetchParks } from '../../actions'
+import { useDispatch, useSelector } from 'react-redux'
+
 const Dashboard = styled.div`
   text-align: center;
   max-width: 1200px;
@@ -31,27 +37,29 @@ const Grid = styled.div`
 `
 
 const Parks = () => {
-  const [ parks, setParks ] = useState([])
+  const dispatch = useDispatch();
+  const parks = useSelector((state) => state.parks);
 
   useEffect(() => {
-    // Get all parks from our API
-    // update parks in our state array
+    fetchData();
+  }, []);
 
-    axios.get('/api/v1/parks.json')
-      .then((res) => {
-        setParks(res.data.data)
+  const fetchData = () => {
+    dispatch(fetchParks());
+  }
+
+  const showParks = () => {
+    if (!!parks.parks) {
+      return parks.parks.data.map((item) => {
+        return (
+          <Park
+            key={item.attributes.name}
+            attributes={item.attributes}
+          />
+        )
       })
-      .catch((res) => console.log(res))
-  }, [parks.length])
-
-  const grid = parks.map((item) => {
-    return (
-      <Park
-        key={item.attributes.name}
-        attributes={item.attributes}
-      />
-    )
-  })
+    }
+  }
 
   return (
     <Dashboard>
@@ -60,10 +68,24 @@ const Parks = () => {
       </Header>
       <Subheader>Get out and hike!</Subheader>
       <Grid>
-        {grid}
+        {showParks()}
       </Grid>
     </Dashboard>
   )
 }
 
+// function mapDispatchToProps(dispatch) {
+//   return bindActionCreators(
+//     { setParks: setParks },
+//     dispatch
+//   );
+// }
+
+// function mapStateToProps(state) {
+//   return {
+//     parks: state.parks
+//   }
+// }
+
 export default Parks
+// export default connect(mapStateToProps, mapDispatchToProps)(Parks);

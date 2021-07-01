@@ -8,11 +8,27 @@ import PropTypes from 'prop-types'
 import App from '../components/App'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
+// Redux
+import { Provider } from 'react-redux'
+import { createStore, combineReducers, applyMiddleware } from 'redux'
+import parksReducer  from '../reducers/parks_reducer'
+import { logger } from 'redux-logger'
+import reduxPromise from 'redux-promise'
+import thunk from 'redux-thunk'
+
+const reducers = combineReducers({
+  parks: parksReducer
+})
+
+const middlewares = applyMiddleware(logger, reduxPromise, thunk);
+
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <Router>
-      <Route path="/" component={App}/>
-    </Router>,
+    <Provider store={createStore(reducers, {}, middlewares)}>
+      <Router>
+        <Route path="/" component={App}/>
+      </Router>
+    </Provider>,
     document.body.appendChild(document.createElement('div')),
   )
 })
