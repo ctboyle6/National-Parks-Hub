@@ -61,7 +61,8 @@ const Park = (props) => {
     dispatch(fetchPark(props.match.params.park_code));
   }
 
-  // -- REVIEWS --
+  // -- BEGIN REVIEWS --
+
   const handleChange = (event) => {
     setReview({ ...review, [event.target.name]: event.target.value })
   }
@@ -89,7 +90,6 @@ const Park = (props) => {
   let reviews
   const showReviews = () => {
     if (park.park) {
-      debugger
       reviews = park.park.included.map((review, index) => {
         return (
           <Review
@@ -101,16 +101,6 @@ const Park = (props) => {
     }
   }
 
-  // if (loaded && park.park.included) {
-  //   reviews = park.included.map((review, index) => {
-  //     return (
-  //       <Review
-  //         key={index}
-  //         attributes={review.attributes}
-  //       />
-  //     )
-  //   })
-  // }
   // -- END REVIEWS --
 
   const showPark = () => {

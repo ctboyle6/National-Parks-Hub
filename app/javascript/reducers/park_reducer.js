@@ -4,6 +4,8 @@ const parkReducer = (state = [], action) => {
             return {
                 ...state,
                 park: action.payload,
+                loading: false,
+                errorMessage: ""
             }
         default:
             return state;
