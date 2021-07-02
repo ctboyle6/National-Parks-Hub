@@ -87,16 +87,30 @@ const Park = (props) => {
   }
 
   let reviews
-  if (loaded && park.included) {
-    reviews = park.included.map((review, index) => {
-      return (
-        <Review
-          key={index}
-          attributes={review.attributes}
-        />
-      )
-    })
+  const showReviews = () => {
+    if (park.park) {
+      debugger
+      reviews = park.park.included.map((review, index) => {
+        return (
+          <Review
+            key={index}
+            attributes={review.attributes}
+          />
+        )
+      })
+    }
   }
+
+  // if (loaded && park.park.included) {
+  //   reviews = park.included.map((review, index) => {
+  //     return (
+  //       <Review
+  //         key={index}
+  //         attributes={review.attributes}
+  //       />
+  //     )
+  //   })
+  // }
   // -- END REVIEWS --
 
   const showPark = () => {
@@ -112,7 +126,7 @@ const Park = (props) => {
                 {/* <Weather
                   weather={getWeather(park.park)}
                 /> */}
-              {reviews}
+              {showReviews()}
             </Main>
           </Column>
           <Column>

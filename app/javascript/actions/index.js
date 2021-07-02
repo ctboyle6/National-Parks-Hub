@@ -25,7 +25,6 @@ export const fetchPark = (park_code) => async (dispatch) => {
         });
 
     } catch (error) {
-        debugger
         dispatch({
             type: 'FETCH_PARK_FAILED',
         });

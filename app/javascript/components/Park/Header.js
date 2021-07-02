@@ -20,7 +20,7 @@ const TotalOutOf = styled.div`
 const Header = (props) => {
   const { name, avg_rating } = props.attributes
   const total = props.reviews.length
-
+  
   return (
     <Wrapper>
       <h1>{name}</h1>
