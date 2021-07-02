@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :parks, param: :park_code
+      resources :parks, param: :park_code do
+        resources :reviews, only: [ :index ]
+      end
       resources :reviews, only: [:create, :destroy]
     end
   end

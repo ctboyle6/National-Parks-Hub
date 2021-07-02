@@ -13,13 +13,15 @@ import { Provider } from 'react-redux'
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import parksReducer  from '../reducers/parks_reducer'
 import parkReducer from '../reducers/park_reducer'
+import reviewsReducer from '../reducers/reviews_reducer'
 import { logger } from 'redux-logger'
 import reduxPromise from 'redux-promise'
 import thunk from 'redux-thunk'
 
 const reducers = combineReducers({
   parks: parksReducer,
-  park: parkReducer
+  park: parkReducer,
+  reviews: reviewsReducer
 })
 
 const middlewares = applyMiddleware(logger, reduxPromise, thunk);

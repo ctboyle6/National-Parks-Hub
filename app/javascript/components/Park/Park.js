@@ -9,8 +9,10 @@ import styled from 'styled-components'
 
 // Redux
 import { fetchPark } from '../../actions'
+import { fetchReviews } from '../../actions'
 import { useDispatch, useSelector } from 'react-redux'
 
+// Style
 const Wrapper = styled.div`
   margin-left: auto;
   margin-right: auto;
@@ -37,9 +39,10 @@ const Main = styled.div`
 const Park = (props) => {
   const dispatch = useDispatch();
   const park = useSelector((state) => state.park);
+  let reviews = useSelector((state) => state.reviews);
 
   // const [park, setPark] = useState({})
-  const [review, setReview] = useState({})
+  // const [review, setReview] = useState({})
   const [loaded, setLoaded] = useState(false)
   const [weather, setWeather] = useState({})
 
@@ -59,6 +62,7 @@ const Park = (props) => {
 
   const fetchData = () => {
     dispatch(fetchPark(props.match.params.park_code));
+    dispatch(fetchReviews(props.match.params.park_code));
   }
 
   // -- BEGIN REVIEWS --
@@ -87,10 +91,9 @@ const Park = (props) => {
     setReview({...review, rating})
   }
 
-  let reviews
   const showReviews = () => {
     if (park.park) {
-      reviews = park.park.included.map((review, index) => {
+      return reviews = park.park.included.map((review, index) => {
         return (
           <Review
             key={index}
@@ -120,13 +123,13 @@ const Park = (props) => {
             </Main>
           </Column>
           <Column>
-            <ReviewForm
+            {/* <ReviewForm
               handleChange={handleChange}
               handleSubmit={handleSubmit}
               setRating={setRating}
               attributes={park.park.data.attributes}
               review={review}
-            />
+            /> */}
           </Column>
         </Fragment>
       )

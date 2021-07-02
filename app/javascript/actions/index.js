@@ -38,3 +38,22 @@ export const fetchPark = (park_code) => async (dispatch) => {
         });
     }
 }
+
+export const fetchReviews = (park_code) => async (dispatch) => {
+    try {
+        dispatch({
+            type: 'FETCH_REVIEWS_LOADING',
+        });
+
+        const res = await Axios.get(`/api/v1/parks/${park_code}/reviews`);
+
+        dispatch({
+            type: 'FETCH_REVIEWS',
+            payload: res.data,
+        });
+    } catch (error) {
+        dispatch({
+            type: 'FETCH_REVIEWS_FAILED',
+        });
+    }
+}
