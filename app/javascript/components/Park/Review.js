@@ -26,7 +26,6 @@ const Description = styled.div`
 
 const Review = (props) => {
   const {rating, title, description} = props.attributes
-  debugger
 
   return (
     <Card>
