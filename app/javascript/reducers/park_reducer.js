@@ -14,7 +14,7 @@ const parkReducer = (state = [], action) => {
                 park: action.payload,
                 loading: false,
                 errorMessage: "",
-                weather: getWeather(action.payload)
+                weather: action.weather
             };
         case 'FETCH_PARK_FAILED':
             return {

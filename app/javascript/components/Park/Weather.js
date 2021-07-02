@@ -16,7 +16,6 @@ const Section = styled.div`
 `
 
 const Weather = (props) => {
-  debugger
   const { coord, main, wind, clouds, sys, name, timezone } = props.weather
 
   const convertDate = (timestamp) => {

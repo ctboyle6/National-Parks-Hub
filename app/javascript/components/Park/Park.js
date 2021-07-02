@@ -107,9 +107,9 @@ const Park = (props) => {
                   attributes={park.park.data.attributes}
                   reviews={park.park.included}
                 />
-                <Weather
+                {/* <Weather
                   weather={weather}
-                />
+                /> */}
               {showReviews()}
             </Main>
           </Column>
