@@ -1,3 +1,5 @@
+import { getWeather } from "../actions/getWeather";
+
 const parkReducer = (state = [], action) => {
     switch (action.type) {
         case 'FETCH_PARK_LOADING':
@@ -11,7 +13,8 @@ const parkReducer = (state = [], action) => {
                 ...state,
                 park: action.payload,
                 loading: false,
-                errorMessage: ""
+                errorMessage: "",
+                weather: getWeather(action.payload)
             };
         case 'FETCH_PARK_FAILED':
             return {
