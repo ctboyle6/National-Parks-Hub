@@ -23,6 +23,7 @@ export const fetchPark = (park_code) => async (dispatch) => {
             type: 'FETCH_PARK',
             payload: res.data,
         });
+
     } catch (error) {
         dispatch({
             type: 'FETCH_PARK_FAILED',
