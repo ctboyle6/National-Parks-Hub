@@ -1,6 +1,16 @@
 module Api
   module V1
     class ReviewsController < ApplicationController
+      def index
+        reviews = park.first.reviews
+
+        if reviews
+          render json: ReviewSerializer.new(reviews).serialized_json
+        else
+          render json: { error: review.errors.messages }, status: 422
+        end
+      end
+      
       def create
         review = park.reviews.new(review_params)
 
@@ -24,7 +34,7 @@ module Api
       private
 
       def park
-        @park ||= Park.find(params[:park_id])
+        @park ||= Park.where(park_code: params[:park_park_code])
       end
 
       def review_params
