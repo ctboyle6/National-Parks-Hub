@@ -43,14 +43,15 @@ const Park = (props) => {
   const [loaded, setLoaded] = useState(false)
   const [weather, setWeather] = useState({})
 
-  const getWeather = (coordinates) => {
-    axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coordinates.data.attributes.latitude}&lon=${coordinates.data.attributes.longitude}&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=imperial`)
-      .then( res => {
-        setWeather(res.data)
-        setLoaded(true)
-      })
-      .catch( res => console.log('caught second'))
-  }
+  // const getWeather = (coordinates) => {
+  //   axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coordinates.data.attributes.latitude}&lon=${coordinates.data.attributes.longitude}&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=imperial`)
+  //     .then( res => {
+  //       // setWeather(res.data)
+  //       setLoaded(true)
+  //       return res.data
+  //     })
+  //     .catch( res => console.log('caught second'))
+  // }
 
   useEffect(() => {
     fetchData();
@@ -100,9 +101,6 @@ const Park = (props) => {
 
   const showPark = () => {
     if (park.park) {
-      // getWeather(park.park);
-      debugger;
-
       return (
         <Fragment>
           <Column>
@@ -112,7 +110,7 @@ const Park = (props) => {
                   reviews={park.park.included}
                 />
                 {/* <Weather
-                  weather={weather}
+                  weather={getWeather(park.park)}
                 /> */}
               {reviews}
             </Main>
