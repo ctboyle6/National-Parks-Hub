@@ -2,6 +2,10 @@ import Axios from 'axios';
 
 export const fetchParks = () => async (dispatch) => {
     try {
+        dispatch({
+            type: 'FETCH_PARKS_LOADING',
+        });
+
         const res = await Axios.get('/api/v1/parks.json');
 
         dispatch({
@@ -11,15 +15,26 @@ export const fetchParks = () => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: 'FETCH_PARKS_FAILED',
-        })
+        });
     }
+}
 
-    // return fetch('/api/v1/parks.json')
-    //     .then(res => res.json())
-    //     .then((data) => {
-    //         return {
-    //             type: 'SET_PARKS',
-    //             payload: data 
-    //         }
-    //     })
+export const fetchPark = (park_code) => async (dispatch) => {
+    try {
+        dispatch({
+            type: 'FETCH_PARK_LOADING',
+        });
+
+        const res = await Axios.get(`/api/v1/parks/${park_code}`)
+
+        dispatch({
+            type: 'FETCH_PARK',
+            payload: res.data,
+        });
+
+    } catch (error) {
+        dispatch({
+            type: 'FETCH_PARK_FAILED',
+        });
+    }
 }

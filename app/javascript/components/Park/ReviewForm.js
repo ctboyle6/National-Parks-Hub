@@ -115,6 +115,7 @@ const ReviewForm = (props) => {
           name="rating"
           onChange={() => console.log('selected:', rating)}
           id={`rating-${rating}`}
+          key={index}
         />
         <label onClick={props.setRating.bind(this, rating)}></label>
       </Fragment>

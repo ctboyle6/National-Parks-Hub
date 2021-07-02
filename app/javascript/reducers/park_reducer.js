@@ -1,27 +1,27 @@
-const parksReducer = (state = [], action) => {
+const parkReducer = (state = [], action) => {
     switch (action.type) {
-        case 'FETCH_PARKS_LOADING':
+        case 'FETCH_PARK_LOADING':
             return {
                 ...state,
                 loading: true,
                 errorMessage: ""
             };
-        case 'FETCH_PARKS':
+        case 'FETCH_PARK':
             return {
                 ...state,
-                parks: action.payload,
+                park: action.payload,
                 loading: false,
                 errorMessage: ""
             };
-        case 'FETCH_PARKS_FAILED':
-            return{
+        case 'FETCH_PARK_FAILED':
+            return {
                 ...state,
                 loading: false,
-                errorMessage: "Unable to load parks"
+                errorMessage: "Unable to load park"
             };
         default:
             return state;
     }
-};
+}
 
-export default parksReducer;
+export default parkReducer;
