@@ -2,6 +2,10 @@ import Axios from 'axios';
 
 export const fetchParks = () => async (dispatch) => {
     try {
+        dispatch({
+            type: 'FETCH_PARKS_LOADING',
+        });
+
         const res = await Axios.get('/api/v1/parks.json');
 
         dispatch({
@@ -17,6 +21,10 @@ export const fetchParks = () => async (dispatch) => {
 
 export const fetchPark = (park_code) => async (dispatch) => {
     try {
+        dispatch({
+            type: 'FETCH_PARK_LOADING',
+        });
+
         const res = await Axios.get(`/api/v1/parks/${park_code}`)
 
         dispatch({
