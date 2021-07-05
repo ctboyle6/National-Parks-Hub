@@ -1,5 +1,5 @@
 class Park < ApplicationRecord
-  has_many :reviews
+  has_many :reviews, dependent: :detroy
 
   def avg_rating
     return 0 unless reviews.count.positive?
