@@ -41,12 +41,8 @@ const Park = (props) => {
   const park = useSelector((state) => state.park);
   let reviews = useSelector((state) => state.reviews);
   const weather = useSelector((state) => state.park.weather);
-  console.log(weather)
 
-  // const [park, setPark] = useState({})
-  // const [review, setReview] = useState({})
   const [loaded, setLoaded] = useState(false)
-  // const [weather, setWeather] = useState({})
 
   useEffect(() => {
     fetchData();
@@ -135,29 +131,6 @@ const Park = (props) => {
   return (
     <Wrapper>
       {showPark()}
-      {/* <Fragment>
-        <Column>
-          <Main>
-              <Header
-                attributes={park.park.data.attributes}
-                reviews={park.park.included}
-              />
-              <Weather
-                weather={weather}
-              />
-            {reviews}
-          </Main>
-        </Column>
-        <Column>
-          <ReviewForm
-            handleChange={handleChange}
-            handleSubmit={handleSubmit}
-            setRating={setRating}
-            attributes={park.park.data.attributes}
-            review={review}
-          />
-        </Column>
-      </Fragment> */}
     </Wrapper>
   )
 }
