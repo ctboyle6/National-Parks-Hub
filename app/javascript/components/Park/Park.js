@@ -40,21 +40,13 @@ const Park = (props) => {
   const dispatch = useDispatch();
   const park = useSelector((state) => state.park);
   let reviews = useSelector((state) => state.reviews);
+  const weather = useSelector((state) => state.park.weather);
+  console.log(weather)
 
   // const [park, setPark] = useState({})
   // const [review, setReview] = useState({})
   const [loaded, setLoaded] = useState(false)
-  const [weather, setWeather] = useState({})
-
-  // const getWeather = (coordinates) => {
-  //   axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coordinates.data.attributes.latitude}&lon=${coordinates.data.attributes.longitude}&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=imperial`)
-  //     .then( res => {
-  //       // setWeather(res.data)
-  //       setLoaded(true)
-  //       return res.data
-  //     })
-  //     .catch( res => console.log('caught second'))
-  // }
+  // const [weather, setWeather] = useState({})
 
   useEffect(() => {
     fetchData();
@@ -116,9 +108,9 @@ const Park = (props) => {
                   attributes={park.park.data.attributes}
                   reviews={park.park.included}
                 />
-                {/* <Weather
-                  weather={getWeather(park.park)}
-                /> */}
+                <Weather
+                  weather={weather}
+                />
               {showReviews()}
             </Main>
           </Column>

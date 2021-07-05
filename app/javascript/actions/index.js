@@ -1,4 +1,5 @@
 import Axios from 'axios';
+import { getWeather } from './getWeather';
 
 export const fetchParks = () => async (dispatch) => {
     try {
@@ -27,9 +28,12 @@ export const fetchPark = (park_code) => async (dispatch) => {
 
         const res = await Axios.get(`/api/v1/parks/${park_code}`)
 
+        const weather = await getWeather(res.data)
+
         dispatch({
             type: 'FETCH_PARK',
             payload: res.data,
+            weather: weather
         });
 
     } catch (error) {
