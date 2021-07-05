@@ -43,6 +43,7 @@ const Park = (props) => {
   const weather = useSelector((state) => state.park.weather);
 
   const [loaded, setLoaded] = useState(false)
+  const [review, setReview] = useState({})
 
   useEffect(() => {
     fetchData();
@@ -111,13 +112,13 @@ const Park = (props) => {
             </Main>
           </Column>
           <Column>
-            {/* <ReviewForm
+            <ReviewForm
               handleChange={handleChange}
               handleSubmit={handleSubmit}
               setRating={setRating}
               attributes={park.park.data.attributes}
               review={review}
-            /> */}
+            />
           </Column>
         </Fragment>
       )
