@@ -66,14 +66,15 @@ const Park = (props) => {
     const csrfToken = document.querySelector('[name=csrf-token]').content
     axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken
 
-    const park_id = park.data.id
+    debugger
+    const park_id = park.park.data.id
     axios.post('/api/v1/reviews', { review, park_id })
       .then( res => {
-        const included = [...park.included, res.data.data]
-        setPark({ ...park, included })
+        const included = [...park.park.included, res.data.data]
+        // setPark({ ...park, included })
         setReview({ title: '', description: '', rating: 0 })
       })
-      .catch( res => {})
+      .catch( err => {console.log(err.response)})
   }
 
   const setRating = (rating, event) => {

@@ -1,5 +1,6 @@
 const reviewsReducer = (state = [], action) => {
     switch (action.type) {
+        // READ
         case 'FETCH_REVIEWS_LOADING':
             return {
                 ...state,
@@ -19,6 +20,30 @@ const reviewsReducer = (state = [], action) => {
                 loading: false,
                 errorMessage: "Unable to load reviews"
             };
+
+        // CREATE
+        case 'CREATE_REVIEW_LOADING':
+            return {
+                ...state,
+                loading: true,
+                errorMessage: ""
+            };
+
+        case 'CREATE_REVIEW':
+            return {
+                ...state,
+                reviews: [...state.reviews, { review: action.payload }],
+                loading: false,
+                errorMessage: ""
+            };
+        
+        case 'CREATE_REVIEW_FAILED':
+            return {
+                ...state,
+                loading: false,
+                errorMessage: "Unable to create review"
+            };
+
         default:
             return state;
     }
