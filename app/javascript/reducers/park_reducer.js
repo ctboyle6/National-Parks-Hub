@@ -9,6 +9,7 @@ const parkReducer = (state = [], action) => {
                 errorMessage: ""
             };
         case 'FETCH_PARK':
+            debugger
             return {
                 ...state,
                 park: action.payload,
