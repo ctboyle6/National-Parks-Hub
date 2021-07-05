@@ -40,7 +40,8 @@ const Park = (props) => {
   const dispatch = useDispatch();
   const park = useSelector((state) => state.park);
   let reviews = useSelector((state) => state.reviews);
-  const weather = useSelector((state) => state.weather)
+  const weather = useSelector((state) => state.park.weather);
+  console.log(weather)
 
   // const [park, setPark] = useState({})
   // const [review, setReview] = useState({})
@@ -107,9 +108,9 @@ const Park = (props) => {
                   attributes={park.park.data.attributes}
                   reviews={park.park.included}
                 />
-                {/* <Weather
+                <Weather
                   weather={weather}
-                /> */}
+                />
               {showReviews()}
             </Main>
           </Column>
