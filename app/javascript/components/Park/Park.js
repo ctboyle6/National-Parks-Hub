@@ -10,6 +10,7 @@ import styled from 'styled-components'
 // Redux
 import { fetchPark } from '../../actions'
 import { fetchReviews } from '../../actions'
+import { createReview } from '../../actions'
 import { useDispatch, useSelector } from 'react-redux'
 
 // Style
@@ -66,16 +67,21 @@ const Park = (props) => {
     const csrfToken = document.querySelector('[name=csrf-token]').content
     axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken
 
-    debugger
     const park_id = park.park.data.id
-    axios.post(`/api/v1/${props.match.params.park_code}/reviews`, { review: review, park_id: park_id })
-      .then( res => {
-        const included = [...park.park.included, res.data.data]
-        console.log(included)
-        // setPark({ ...park, included })
-        setReview({ title: '', description: '', rating: 0 })
-      })
-      .catch( err => {console.log(err.response)})
+    const park_code = props.match.params.park_code
+
+    dispatch(createReview(park_code, park_id, review.title, review.description, review.rating));
+
+    setReview({ title: '', description: '', rating: 0 });
+
+    // axios.post(`/api/v1/${props.match.params.park_code}/reviews`, { review: review, park_id: park_id })
+    //   .then( res => {
+    //     const included = [...park.park.included, res.data.data]
+    //     console.log(included)
+    //     // setPark({ ...park, included })
+    //     setReview({ title: '', description: '', rating: 0 })
+    //   })
+    //   .catch( err => {console.log(err.response)})
   }
 
   const setRating = (rating, event) => {

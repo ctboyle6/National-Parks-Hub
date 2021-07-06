@@ -62,7 +62,7 @@ export const fetchReviews = (park_code) => async (dispatch) => {
     }
 }
 
-export const createReview = (park_id, title, description, rating) => async (dispatch) => {
+export const createReview = (park_code, park_id, title, description, rating) => async (dispatch) => {
     try {
         dispatch({
             type: 'CREATE_REVIEW_LOADING',
@@ -72,9 +72,11 @@ export const createReview = (park_id, title, description, rating) => async (disp
             park_id: park_id,
             title,
             description,
+            rating,
         });
 
         const data = JSON.parse(response.config.data);
+        debugger
 
         dispatch({
             type: 'CREATE_REVIEW',
