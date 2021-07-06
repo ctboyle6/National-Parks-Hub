@@ -107,7 +107,7 @@ const RatingTitle = styled.div`
 const ReviewForm = (props) => {
   const ratingOptions = [5, 4, 3, 2, 1].map( (rating, index) => {
     return (
-      <Fragment>
+      <Fragment key={index}>
         <input
           type="radio"
           value={rating}
@@ -115,7 +115,6 @@ const ReviewForm = (props) => {
           name="rating"
           onChange={() => console.log('selected:', rating)}
           id={`rating-${rating}`}
-          key={index}
         />
         <label onClick={props.setRating.bind(this, rating)}></label>
       </Fragment>
