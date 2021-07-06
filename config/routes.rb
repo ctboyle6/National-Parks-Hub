@@ -7,12 +7,12 @@ Rails.application.routes.draw do
 
   root 'pages#index'
 
-  namespace :api do
+  namespace :api, defaults: { format: json } do
     namespace :v1 do
-      resources :parks, param: :park_code do
+      resources :reviews, only: [ :update, :destroy ]
+      resources :parks, param: :park_code, only: [ :index, :show ] do
         resources :reviews, only: [ :index, :create ]
       end
-      resources :reviews, only: [ :destroy ]
     end
   end
 
