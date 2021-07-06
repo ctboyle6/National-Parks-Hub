@@ -12,7 +12,8 @@ module Api
       end
       
       def create
-        review = park.first.reviews.new(review_params)
+        review = Review.new(review_params)
+        review.park = park
 
         if review.save
           render json: ReviewSerializer.new(review).serialized_json

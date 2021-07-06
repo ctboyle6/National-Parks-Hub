@@ -68,7 +68,7 @@ export const createReview = (park_id, title, description, rating) => async (disp
             type: 'CREATE_REVIEW_LOADING',
         });
 
-        const response = await Axios.post(`/api/v1/parks/${park_id}/reviews`, {
+        const response = await Axios.post(`/api/v1/parks/${park_code}/reviews`, {
             park_id: park_id,
             title,
             description,

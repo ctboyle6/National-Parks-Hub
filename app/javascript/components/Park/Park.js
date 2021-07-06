@@ -68,9 +68,10 @@ const Park = (props) => {
 
     debugger
     const park_id = park.park.data.id
-    axios.post('/api/v1/reviews', { review, park_id })
+    axios.post(`/api/v1/${props.match.params.park_code}/reviews`, { review: review, park_id: park_id })
       .then( res => {
         const included = [...park.park.included, res.data.data]
+        console.log(included)
         // setPark({ ...park, included })
         setReview({ title: '', description: '', rating: 0 })
       })
