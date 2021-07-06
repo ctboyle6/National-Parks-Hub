@@ -73,15 +73,6 @@ const Park = (props) => {
     dispatch(createReview(park_code, park_id, review.title, review.description, review.rating));
 
     setReview({ title: '', description: '', rating: 0 });
-
-    // axios.post(`/api/v1/${props.match.params.park_code}/reviews`, { review: review, park_id: park_id })
-    //   .then( res => {
-    //     const included = [...park.park.included, res.data.data]
-    //     console.log(included)
-    //     // setPark({ ...park, included })
-    //     setReview({ title: '', description: '', rating: 0 })
-    //   })
-    //   .catch( err => {console.log(err.response)})
   }
 
   const setRating = (rating, event) => {
