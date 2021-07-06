@@ -10,6 +10,7 @@ import styled from 'styled-components'
 // Redux
 import { fetchPark } from '../../actions'
 import { fetchReviews } from '../../actions'
+import { createReview } from '../../actions'
 import { useDispatch, useSelector } from 'react-redux'
 
 // Style
@@ -66,14 +67,12 @@ const Park = (props) => {
     const csrfToken = document.querySelector('[name=csrf-token]').content
     axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken
 
-    const park_id = park.data.id
-    axios.post('/api/v1/reviews', { review, park_id })
-      .then( res => {
-        const included = [...park.included, res.data.data]
-        setPark({ ...park, included })
-        setReview({ title: '', description: '', rating: 0 })
-      })
-      .catch( res => {})
+    const park_id = park.park.data.id
+    const park_code = props.match.params.park_code
+
+    dispatch(createReview(park_code, park_id, review.title, review.description, review.rating));
+
+    setReview({ title: '', description: '', rating: 0 });
   }
 
   const setRating = (rating, event) => {

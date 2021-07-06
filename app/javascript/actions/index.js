@@ -61,3 +61,30 @@ export const fetchReviews = (park_code) => async (dispatch) => {
         });
     }
 }
+
+export const createReview = (park_code, park_id, title, description, rating) => async (dispatch) => {
+    try {
+        dispatch({
+            type: 'CREATE_REVIEW_LOADING',
+        });
+
+        const response = await Axios.post(`/api/v1/parks/${park_code}/reviews`, {
+            park_id: park_id,
+            title,
+            description,
+            rating,
+        });
+
+        const data = JSON.parse(response.config.data);
+        debugger
+
+        dispatch({
+            type: 'CREATE_REVIEW',
+            payload: data,
+        });
+    } catch (error) {
+        dispatch({
+            type: 'CREATE_REVIEW_FAILED',
+        });
+    }
+};

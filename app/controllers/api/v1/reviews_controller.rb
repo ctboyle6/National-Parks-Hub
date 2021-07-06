@@ -1,8 +1,11 @@
 module Api
   module V1
     class ReviewsController < ApplicationController
+      skip_before_action :authenticate_user!, only: %i[index]
+      skip_before_action :verify_authenticity_token, only: %i[create destroy]
+
       def index
-        reviews = park.first.reviews
+        reviews = park.reviews
 
         if reviews
           render json: ReviewSerializer.new(reviews).serialized_json
@@ -12,9 +15,10 @@ module Api
       end
       
       def create
-        review = park.reviews.new(review_params)
+        review = Review.new(review_params)
+        review.park = park
 
-        if review.save
+        if review.save!
           render json: ReviewSerializer.new(review).serialized_json
         else
           render json: { error: review.errors.messages }, status: 422
@@ -34,7 +38,7 @@ module Api
       private
 
       def park
-        @park ||= Park.where(park_code: params[:park_park_code])
+        @park ||= Park.find_by(park_code: params[:park_park_code])
       end
 
       def review_params

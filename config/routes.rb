@@ -1,13 +1,18 @@
 Rails.application.routes.draw do
   devise_for :users
+  # devise_scope :user do 
+  #   get "/users/sign_out", to: "devise/sessions#destroy"
+  #   get "/guest/sign_in", to: "sessions#guest"
+  # end
+
   root 'pages#index'
 
-  namespace :api do
+  namespace :api, defaults: { format: JSON } do
     namespace :v1 do
-      resources :parks, param: :park_code do
-        resources :reviews, only: [ :index ]
+      resources :reviews, only: [ :update, :destroy ]
+      resources :parks, param: :park_code, only: [ :index, :show ] do
+        resources :reviews, only: [ :index, :create ]
       end
-      resources :reviews, only: [:create, :destroy]
     end
   end
 
