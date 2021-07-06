@@ -32,8 +32,6 @@ const Park = (props) => {
   return (
     <Card>
       <ParkName>{props.attributes.name}</ParkName>
-      <div className="park-lat">{props.attributes.latitude}</div>
-      <div className="park-lon">{props.attributes.longitude}</div>
       <Rating rating={props.attributes.avg_rating}/>
       <LinkWrapper>
         <Link to={`/parks/${props.attributes.park_code}`}>View Park</Link>
