@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   root 'pages#index'
 
-  namespace :api, defaults: { format: json } do
+  namespace :api, defaults: { format: JSON } do
     namespace :v1 do
       resources :reviews, only: [ :update, :destroy ]
       resources :parks, param: :park_code, only: [ :index, :show ] do
