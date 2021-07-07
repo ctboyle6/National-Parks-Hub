@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import Park from './Park'
 import styled from 'styled-components'
 
@@ -35,7 +35,9 @@ const Grid = styled.div`
 
 const Parks = () => {
   const dispatch = useDispatch();
-  const parks = useSelector((state) => state.parks);
+  const parks = useSelector((state) => state.parks.parks);
+
+  const [searchTerm, setSearchTerm] = useState("")
 
   useEffect(() => {
     fetchData();
@@ -46,8 +48,8 @@ const Parks = () => {
   }
 
   const showParks = () => {
-    if (parks.parks) {
-      return parks.parks.data.map((item) => {
+    if (parks) {
+      return parks.data.map((item) => {
         return (
           <Park
             key={item.attributes.name}
@@ -64,6 +66,15 @@ const Parks = () => {
         <h1>National Parks Hub</h1>
       </Header>
       <Subheader>Get out and hike!</Subheader>
+      <div className="search-bar">
+        <input 
+          type="text"
+          placeholder="Search a park..."
+          onChange={(event) => {
+            setSearchTerm(event.target.value);
+          }}
+        />
+      </div>
       <Grid>
         {showParks()}
       </Grid>
