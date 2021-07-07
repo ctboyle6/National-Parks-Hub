@@ -33,6 +33,17 @@ const Grid = styled.div`
   padding: 20px;
 `
 
+const SearchBar = styled.div`
+  height: 40px;
+  font-size: 20px;
+  margin: 0 auto;
+  margin-top: 20px;
+
+  input {
+    width: 55%
+  }
+`
+
 const Parks = () => {
   const dispatch = useDispatch();
   const parks = useSelector((state) => state.parks.parks);
@@ -72,7 +83,7 @@ const Parks = () => {
         <h1>National Parks Hub</h1>
       </Header>
       <Subheader>Get out and hike!</Subheader>
-      <div className="search-bar">
+      <SearchBar>
         <input 
           type="text"
           placeholder="Search a park..."
@@ -80,7 +91,7 @@ const Parks = () => {
             setSearchTerm(event.target.value);
           }}
         />
-      </div>
+      </SearchBar>
       <Grid>
         {showParks()}
       </Grid>
