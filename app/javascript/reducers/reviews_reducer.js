@@ -32,7 +32,7 @@ const reviewsReducer = (state = [], action) => {
         case 'CREATE_REVIEW':
             return {
                 ...state,
-                reviews: { ...state.reviews, data: action.payload },
+                reviews: [ ...state.reviews, action.payload ],
                 loading: false,
                 errorMessage: ""
             };

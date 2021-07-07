@@ -53,7 +53,7 @@ export const fetchReviews = (park_code) => async (dispatch) => {
 
         dispatch({
             type: 'FETCH_REVIEWS',
-            payload: res.data,
+            payload: res.data.data,
         });
     } catch (error) {
         dispatch({
@@ -75,12 +75,11 @@ export const createReview = (park_code, park_id, title, description, rating) => 
             rating,
         });
 
-        const data = JSON.parse(response.config.data);
-        debugger
+        // const data = JSON.parse(response.data.data);
 
         dispatch({
             type: 'CREATE_REVIEW',
-            payload: data,
+            payload: response.data.data,
         });
     } catch (error) {
         dispatch({

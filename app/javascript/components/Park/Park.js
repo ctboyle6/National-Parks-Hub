@@ -40,15 +40,22 @@ const Main = styled.div`
 const Park = (props) => {
   const dispatch = useDispatch();
   const park = useSelector((state) => state.park);
-  let reviews = useSelector((state) => state.reviews);
+  let reviews = useSelector((state) => state.reviews.reviews);
   const weather = useSelector((state) => state.park.weather);
 
   const [loaded, setLoaded] = useState(false)
   const [review, setReview] = useState({})
+  const [ stateReviews, setStateReviews ] = useState([])
 
   useEffect(() => {
     fetchData();
   }, [])
+
+  useEffect(() => {
+    if (reviews) {
+      setStateReviews(reviews)
+    }
+  }, [reviews])
 
   const fetchData = () => {
     dispatch(fetchPark(props.match.params.park_code));
@@ -80,8 +87,8 @@ const Park = (props) => {
   }
 
   const showReviews = () => {
-    if (park.park) {
-      return reviews = park.park.included.map((review, index) => {
+    if (stateReviews.length) {
+      return stateReviews.map((review, index) => {
         return (
           <Review
             key={index}
@@ -89,6 +96,8 @@ const Park = (props) => {
           />
         )
       })
+    } else {
+      return null
     }
   }
 
