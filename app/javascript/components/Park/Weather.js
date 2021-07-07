@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components'
+import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 const Wrapper = styled.div`
 border: 1px solid rgba(0, 0, 0, 0.1);
@@ -15,6 +17,11 @@ const Section = styled.div`
   }
 `
 
+const Map = ReactMapboxGl({
+  accessToken:
+    'pk.eyJ1IjoiY3Rib3lsZTYiLCJhIjoiY2txdHZ4bGNuMmV3YjJ1bzh1cHplMGUxZCJ9.G4IOtzu5WpTeBp2OAdwp7g'
+});
+
 const Weather = (props) => {
   const { coord, main, wind, clouds, sys, name, timezone } = props.weather
 
@@ -25,6 +32,18 @@ const Weather = (props) => {
 
   return (
     <Wrapper>
+        <Map
+          style="mapbox://styles/mapbox/streets-v9"
+          containerStyle={{
+            height: '50vh',
+            width: '45vw'
+          }}
+          center={[coord.lon, coord.lat]}
+        >
+          {/* <Layer type="symbol" id="marker" layout={{ 'icon-image': 'marker-15' }}>
+            <Feature coordinates={[coord.lat, coord.lon]} />
+          </Layer> */}
+        </Map>
       <Section>
         <i className="fas fa-map-marked-alt"></i>
         <p>
