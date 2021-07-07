@@ -49,7 +49,13 @@ const Parks = () => {
 
   const showParks = () => {
     if (parks) {
-      return parks.data.map((item) => {
+      return parks.data.filter((val) => {
+        if (searchTerm == "") {
+          return val
+        } else if (val.attributes.name.toLowerCase().includes(searchTerm.toLowerCase())) {
+          return val
+        }
+      }).map((item) => {
         return (
           <Park
             key={item.attributes.name}
