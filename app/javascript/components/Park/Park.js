@@ -6,6 +6,8 @@ import Review from './Review'
 import Weather from './Weather'
 import styled from 'styled-components'
 // import { BarLoader } from 'react-spinners'
+import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 // Redux
 import { fetchPark } from '../../actions'
@@ -36,6 +38,11 @@ const Column = styled.div`
 const Main = styled.div`
   padding-left: 50px;
 `
+
+const Map = ReactMapboxGl({
+  accessToken:
+    'pk.eyJ1IjoiY3Rib3lsZTYiLCJhIjoiY2txdHZ4bGNuMmV3YjJ1bzh1cHplMGUxZCJ9.G4IOtzu5WpTeBp2OAdwp7g'
+});
 
 const Park = (props) => {
   const dispatch = useDispatch();
@@ -109,13 +116,22 @@ const Park = (props) => {
         <Fragment>
           <Column>
             <Main>
-                <Header
-                  attributes={park.park.data.attributes}
-                  reviews={park.park.included}
-                />
-                <Weather
-                  weather={weather}
-                />
+              <Header
+                attributes={park.park.data.attributes}
+                reviews={park.park.included}
+              />
+              <Map
+                style="mapbox://styles/mapbox/streets-v9"
+                containerStyle={{
+                  height: '50vh',
+                  width: '45vw'
+                }}
+                center={[park.park.data.attributes.longitude, park.park.data.attributes.latitude]}
+              >
+              </Map>
+              <Weather
+                weather={weather}
+              />
               {showReviews()}
             </Main>
           </Column>
