@@ -19,6 +19,21 @@ const Background = styled.div`
     z-index: 9;
 `
 
+const LinkWrapper = styled.div`
+    border: 1px solid grey;
+    border-radius: 4px;
+    width: 130px;
+    margin: 18px 0 0 48px;
+    padding: 6px;
+    background: #000;
+    text-align: center;
+
+    a {
+        text-decoration: none;
+        color: #fff;
+    }
+`
+
 const ModalWrapper = styled.div`
     width: 1000px;
     height: 600px;
@@ -105,8 +120,9 @@ export const Modal = ({ showModal, setShowModal, name, park_code, weather }) => 
                             <ModalContent>
                                 <h2>{name}</h2>
                                 <Weather weather={weather}/>
-                                
-                                <Link to={`/parks/${park_code}`}>Go to Park</Link>
+                                <LinkWrapper>
+                                    <Link to={`/parks/${park_code}`}>Go to Park</Link>
+                                </LinkWrapper>
                             </ModalContent>
                             <CloseModalButton aria-label='Close Modal' onClick={() => setShowModal(prev => !prev)} />
                         </ModalWrapper>
