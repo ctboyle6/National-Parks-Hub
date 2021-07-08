@@ -15,16 +15,19 @@ const Dashboard = styled.div`
 `
 
 const Header = styled.div`
-  padding: 100px 100px 10px 100px;
+  padding: 60px 0px 10px 0px;
 
   h1 {
-    font-size: 42px;
+    font-size: 50px;
+    font-weight: bold;
+    color: #fff;
   }
 `
 
 const Subheader = styled.div`
   font-weight: 300;
   font-size: 26px;
+  color: #fff;
 `
 const Grid = styled.div`
   display: grid;
