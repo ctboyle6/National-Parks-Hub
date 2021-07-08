@@ -18,16 +18,18 @@ const Header = styled.div`
   padding: 60px 0px 10px 0px;
 
   h1 {
-    font-size: 50px;
+    font-family: 'Lora', serif;
+    font-size: 70px;
     font-weight: bold;
     color: #fff;
   }
 `
 
 const Subheader = styled.div`
-  font-weight: 300;
+  font-weight: 400;
   font-size: 26px;
   color: #fff;
+  font-family: 'Lora', serif;
 `
 const Grid = styled.div`
   display: grid;
@@ -40,8 +42,7 @@ const Grid = styled.div`
 const SearchBar = styled.div`
   height: 40px;
   font-size: 20px;
-  margin: 0 auto;
-  margin-top: 20px;
+  margin: 30px 0 20px 0;
 
   input {
     width: 55%
