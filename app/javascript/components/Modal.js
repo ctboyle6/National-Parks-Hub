@@ -44,7 +44,14 @@ const ModalContent = styled.div`
     justify-content: center;
     align-items: center;
     line-height: 1.8;
-    color: #141414
+    color: #141414;
+
+    h2 {
+        color: #65776a;
+        font-family: 'Lora', serif;
+        font-size: 56px;
+        font-weight: bold;
+    }
 
     p {
         margin-bottom: 1rem;
@@ -94,8 +101,7 @@ export const Modal = ({ showModal, setShowModal, name, park_code, weather }) => 
                         <ModalWrapper showModal={showModal}>
                             <ModalImg src={`https://source.unsplash.com/600x500?/${name}`} alt={`${name}`} />
                             <ModalContent>
-                                <h1>{name}</h1>
-                                <p>{park_code}</p>
+                                <h2>{name}</h2>
                                 <Weather weather={weather}/>
                             </ModalContent>
                             <CloseModalButton aria-label='Close Modal' onClick={() => setShowModal(prev => !prev)} />
