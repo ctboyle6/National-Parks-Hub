@@ -3,12 +3,11 @@ import styled from 'styled-components'
 
 const Wrapper = styled.div`
   border-radius: 8px;
-  margin: 12px auto;
+  margin: 12px 32px 12px 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
   font-size: 14px;
   background: #fff;
-  margin-right: 32px;
   box-shadow: 2px 2px 6px rgb(0, 0, 0, 0.3);
 `
 

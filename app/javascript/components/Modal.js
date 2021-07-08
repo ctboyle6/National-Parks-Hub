@@ -45,9 +45,10 @@ const ModalContent = styled.div`
     align-items: center;
     line-height: 1.8;
     color: #141414;
+    background: #65776a;
 
     h2 {
-        color: #65776a;
+        color: #fff;
         font-family: 'Lora', serif;
         font-size: 56px;
         font-weight: bold;
