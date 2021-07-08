@@ -53,6 +53,7 @@ const LinkWrapper = styled.div`
 
 const Main = styled.div`
   padding-left: 50px;
+  margin-right: 32px;
 `
 // Mapbox
 const Map = ReactMapboxGl({

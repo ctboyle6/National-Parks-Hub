@@ -8,8 +8,8 @@ const Wrapper = styled.div`
   grid-template-columns: 1fr 1fr;
   font-size: 14px;
   background: #fff;
-  margin-right: 32px;
   box-shadow: 2px 2px 6px rgb(0, 0, 0, 0.3);
+  align-items: center;
 `
 
 const Section = styled.div`

@@ -1,4 +1,5 @@
 import React, { useRef } from 'react'
+import { BrowserRouter as Router, Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { MdClose } from 'react-icons/md'
 import { useSpring, animated } from 'react-spring'
@@ -16,6 +17,21 @@ const Background = styled.div`
     justify-content: center;
     align-items: center;
     z-index: 9;
+`
+
+const LinkWrapper = styled.div`
+    border: 1px solid grey;
+    border-radius: 4px;
+    width: 130px;
+    margin: 18px 0 0 48px;
+    padding: 6px;
+    background: #000;
+    text-align: center;
+
+    a {
+        text-decoration: none;
+        color: #fff;
+    }
 `
 
 const ModalWrapper = styled.div`
@@ -44,7 +60,15 @@ const ModalContent = styled.div`
     justify-content: center;
     align-items: center;
     line-height: 1.8;
-    color: #141414
+    color: #141414;
+    background: #65776a;
+
+    h2 {
+        color: #fff;
+        font-family: 'Lora', serif;
+        font-size: 56px;
+        font-weight: bold;
+    }
 
     p {
         margin-bottom: 1rem;
@@ -94,9 +118,11 @@ export const Modal = ({ showModal, setShowModal, name, park_code, weather }) => 
                         <ModalWrapper showModal={showModal}>
                             <ModalImg src={`https://source.unsplash.com/600x500?/${name}`} alt={`${name}`} />
                             <ModalContent>
-                                <h1>{name}</h1>
-                                <p>{park_code}</p>
+                                <h2>{name}</h2>
                                 <Weather weather={weather}/>
+                                <LinkWrapper>
+                                    <Link to={`/parks/${park_code}`}>Go to Park</Link>
+                                </LinkWrapper>
                             </ModalContent>
                             <CloseModalButton aria-label='Close Modal' onClick={() => setShowModal(prev => !prev)} />
                         </ModalWrapper>
