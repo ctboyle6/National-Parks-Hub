@@ -9,9 +9,9 @@ import { useDispatch, useSelector } from 'react-redux'
 
 const Dashboard = styled.div`
   text-align: center;
-  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
+  background: #65776a;
 `
 
 const Header = styled.div`
