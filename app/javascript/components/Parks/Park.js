@@ -9,7 +9,8 @@ const Card = styled.div`
   background: #fff;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  min-height: 160px;
 `
 
 const ParkName = styled.div`
@@ -26,6 +27,7 @@ const LinkWrapper = styled.div`
 
 const ModalButton = styled.button`
   margin: 8px auto;
+  padding: 2px 8px;
   border-radius: 8px;
   border: none;
   background: #141414;
