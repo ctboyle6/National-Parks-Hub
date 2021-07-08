@@ -4,12 +4,18 @@ import styled from 'styled-components'
 import Rating from '../Rating/Rating'
 import { Modal } from '../Modal'
 
+// Redux
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchPark } from '../../actions'
+
+
 const Card = styled.div`
   border: 1px solid #efefef;
   background: #fff;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  min-height: 160px;
 `
 
 const ParkName = styled.div`
@@ -25,20 +31,27 @@ const LinkWrapper = styled.div`
 `
 
 const ModalButton = styled.button`
-  padding: 4px 12px;
-  margin: 14px 32px;
-  border-radius: 4px;
+  margin: 8px auto;
+  padding: 2px 8px;
+  border-radius: 8px;
   border: none;
   background: #141414;
   color: #fff;
   font-size: 14px;
   cursor: pointer;
+
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f06e";
 `
 
 const Park = (props) => {
   const [showModal, setShowModal] = useState(false)
+  const dispatch = useDispatch();
+  const weather = useSelector((state) => state.park.weather);
 
   const openModal = () => {
+    dispatch(fetchPark(props.attributes.park_code))
     setShowModal(prev => !prev)
   }
 
@@ -50,8 +63,14 @@ const Park = (props) => {
           <Rating rating={props.attributes.avg_rating}/>
         </Link>
       </LinkWrapper>
-      <ModalButton onClick={openModal}>See Park</ModalButton>
-      <Modal showModal={showModal} setShowModal={setShowModal}  name={props.attributes.name} park_code={props.attributes.park_code}/> 
+      <ModalButton onClick={openModal}><i className="fas fa-eye"></i></ModalButton>
+      <Modal 
+        showModal={showModal} 
+        setShowModal={setShowModal}  
+        name={props.attributes.name} 
+        park_code={props.attributes.park_code}
+        weather={weather}
+      /> 
     </Card>
   )
 }

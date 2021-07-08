@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import Park from './Park'
 import styled from 'styled-components'
 
-
 // Redux
 import { fetchParks } from '../../actions'
 import { useDispatch, useSelector } from 'react-redux'
