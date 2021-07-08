@@ -25,14 +25,17 @@ const LinkWrapper = styled.div`
 `
 
 const ModalButton = styled.button`
-  padding: 4px 12px;
-  margin: 14px 32px;
-  border-radius: 4px;
+  margin: 8px auto;
+  border-radius: 8px;
   border: none;
   background: #141414;
   color: #fff;
   font-size: 14px;
   cursor: pointer;
+
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f06e";
 `
 
 const Park = (props) => {
@@ -50,7 +53,7 @@ const Park = (props) => {
           <Rating rating={props.attributes.avg_rating}/>
         </Link>
       </LinkWrapper>
-      <ModalButton onClick={openModal}>See Park</ModalButton>
+      <ModalButton onClick={openModal}><i className="fas fa-eye"></i></ModalButton>
       <Modal showModal={showModal} setShowModal={setShowModal}  name={props.attributes.name} park_code={props.attributes.park_code}/> 
     </Card>
   )
