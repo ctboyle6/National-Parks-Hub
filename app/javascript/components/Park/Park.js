@@ -1,11 +1,11 @@
 import React, { useState, useEffect, Fragment } from 'react'
+import { BrowserRouter as Router, Link } from 'react-router-dom'
 import axios from 'axios'
 import Header from './Header'
 import ReviewForm from './ReviewForm'
 import Review from './Review'
 import Weather from './Weather'
 import styled from 'styled-components'
-// import { BarLoader } from 'react-spinners'
 import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
@@ -35,6 +35,22 @@ const Column = styled.div`
     background: #000;
   }
 `
+
+const LinkWrapper = styled.div`
+  border: 1px solid grey;
+  border-radius: 4px;
+  width: 130px;
+  margin: 18px 0 0 40px;
+  padding: 6px;
+  background: #000;
+  text-align: center;
+
+  a {
+    text-decoration: none;
+    color: #fff;
+  }
+`
+
 const Main = styled.div`
   padding-left: 50px;
 `
@@ -43,7 +59,8 @@ const Map = ReactMapboxGl({
   accessToken:
   process.env.REACT_APP_MAPBOX_API_KEY
 });
-  
+
+// Component 
 const Park = (props) => {
   const dispatch = useDispatch();
   const park = useSelector((state) => state.park);
@@ -115,6 +132,9 @@ const Park = (props) => {
       return (
         <Fragment>
           <Column>
+            <LinkWrapper>
+              <Link to="/">Back to Parks</Link>
+            </LinkWrapper>
             <Main>
               <Header
                 attributes={park.park.data.attributes}
