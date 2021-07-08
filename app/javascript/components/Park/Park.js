@@ -8,7 +8,6 @@ import Weather from './Weather'
 import styled from 'styled-components'
 import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import ScrollButton from '../ScrollButton'
 
 // Redux
 import { fetchPark } from '../../actions'
