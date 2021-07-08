@@ -16,6 +16,8 @@ const Card = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   min-height: 160px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+  border-radius: 2px;
 `
 
 const ParkName = styled.div`

@@ -12,7 +12,7 @@ const Button = styled.div`
    font-size: 3rem;
    z-index: 1;
    cursor: pointer;
-   color: green;
+   color: #e9af35;
 `
 
 const ScrollButton = () =>{

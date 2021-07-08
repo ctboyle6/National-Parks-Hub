@@ -19,8 +19,8 @@ const Background = styled.div`
 `
 
 const ModalWrapper = styled.div`
-    width: 800px;
-    height: 500px;
+    width: 1000px;
+    height: 600px;
     box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
     background: #fff;
     color: #000;
@@ -92,7 +92,7 @@ export const Modal = ({ showModal, setShowModal, name, park_code, weather }) => 
                 <Background ref={modalRef} onClick={closeModal}>
                     <animated.div style={animation}>
                         <ModalWrapper showModal={showModal}>
-                            <ModalImg src={`https://source.unsplash.com/500x400?/${name}`} alt={`${name}`} />
+                            <ModalImg src={`https://source.unsplash.com/600x500?/${name}`} alt={`${name}`} />
                             <ModalContent>
                                 <h1>{name}</h1>
                                 <p>{park_code}</p>
