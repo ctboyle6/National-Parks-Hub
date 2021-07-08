@@ -2,6 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Link } from 'react-router-dom'
 import styled from 'styled-components'
 import Rating from '../Rating/Rating'
+import { Modal } from '../Modal'
 
 const Card = styled.div`
   border: 1px solid #efefef;
@@ -28,7 +29,23 @@ const LinkWrapper = styled.div`
   }
 `
 
+const ModalButton = styled.button`
+  padding: 16px 32px;
+  border-radius: 4px;
+  border: none;
+  background: #141414;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+`
+
 const Park = (props) => {
+  const [showModal, setShowModal] = useState(false)
+
+  const openModal = () => {
+    setShowModal(prev => !prev)
+  }
+
   return (
     <Card>
       <ParkName>{props.attributes.name}</ParkName>
@@ -36,6 +53,8 @@ const Park = (props) => {
       <LinkWrapper>
         <Link to={`/parks/${props.attributes.park_code}`}>View Park</Link>
       </LinkWrapper>
+      <ModalButton onClick={openModal}>I'm a Modal</ModalButton>
+      <Modal showModal={showModal} setShowModal={setShowModal}/> 
     </Card>
   )
 }
