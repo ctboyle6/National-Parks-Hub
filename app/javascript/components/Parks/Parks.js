@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Park from './Park'
 import styled from 'styled-components'
+import ScrollButton from '../ScrollButton'
 
 // Redux
 import { fetchParks } from '../../actions'
@@ -95,6 +96,7 @@ const Parks = () => {
       <Grid>
         {showParks()}
       </Grid>
+      <ScrollButton />
     </Dashboard>
   )
 }
