@@ -2,6 +2,7 @@ import React, { useRef } from 'react'
 import styled from 'styled-components'
 import { MdClose } from 'react-icons/md'
 import { useSpring, animated } from 'react-spring'
+import Weather from './Park/Weather'
 
 
 const Background = styled.div`
@@ -68,7 +69,7 @@ const CloseModalButton = styled(MdClose)`
     z-index: 10;
 `
 
-export const Modal = ({ showModal, setShowModal, name, park_code }) => {
+export const Modal = ({ showModal, setShowModal, name, park_code, weather }) => {
     const modalRef = useRef();
     
     const animation = useSpring({
@@ -87,7 +88,7 @@ export const Modal = ({ showModal, setShowModal, name, park_code }) => {
  
     return (
         <>
-            {showModal ? (
+            {showModal && weather ? (
                 <Background ref={modalRef} onClick={closeModal}>
                     <animated.div style={animation}>
                         <ModalWrapper showModal={showModal}>
@@ -95,6 +96,7 @@ export const Modal = ({ showModal, setShowModal, name, park_code }) => {
                             <ModalContent>
                                 <h1>{name}</h1>
                                 <p>{park_code}</p>
+                                <Weather weather={weather}/>
                             </ModalContent>
                             <CloseModalButton aria-label='Close Modal' onClick={() => setShowModal(prev => !prev)} />
                         </ModalWrapper>

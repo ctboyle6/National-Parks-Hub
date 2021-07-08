@@ -4,6 +4,11 @@ import styled from 'styled-components'
 import Rating from '../Rating/Rating'
 import { Modal } from '../Modal'
 
+// Redux
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchPark } from '../../actions'
+
+
 const Card = styled.div`
   border: 1px solid #efefef;
   background: #fff;
@@ -42,8 +47,11 @@ const ModalButton = styled.button`
 
 const Park = (props) => {
   const [showModal, setShowModal] = useState(false)
+  const dispatch = useDispatch();
+  const weather = useSelector((state) => state.park.weather);
 
   const openModal = () => {
+    dispatch(fetchPark(props.attributes.park_code))
     setShowModal(prev => !prev)
   }
 
@@ -56,7 +64,13 @@ const Park = (props) => {
         </Link>
       </LinkWrapper>
       <ModalButton onClick={openModal}><i className="fas fa-eye"></i></ModalButton>
-      <Modal showModal={showModal} setShowModal={setShowModal}  name={props.attributes.name} park_code={props.attributes.park_code}/> 
+      <Modal 
+        showModal={showModal} 
+        setShowModal={setShowModal}  
+        name={props.attributes.name} 
+        park_code={props.attributes.park_code}
+        weather={weather}
+      /> 
     </Card>
   )
 }
