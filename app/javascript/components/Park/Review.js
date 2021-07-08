@@ -4,9 +4,11 @@ import styled from 'styled-components'
 
 const Card = styled.div`
   border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
+  border-radius: 8px;
   padding: 20px;
-  margin: 0 20px 20px 0;
+  margin: 0 32px 20px 0;
+  box-shadow: 2px 2px 6px rgb(0, 0, 0, 0.3);
+  background: #fff;
 `
 
 const RatingContainer = styled.div`

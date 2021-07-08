@@ -2,11 +2,14 @@ import React from 'react';
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
-  border-radius: 4px;
-  margin: 0 auto;
+  border-radius: 8px;
+  margin: 12px auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
   font-size: 14px;
+  background: #fff;
+  margin-right: 32px;
+  box-shadow: 2px 2px 6px rgb(0, 0, 0, 0.3);
 `
 
 const Section = styled.div`

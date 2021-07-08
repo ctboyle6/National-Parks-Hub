@@ -23,7 +23,7 @@ const Wrapper = styled.div`
   grid-template-columns: repeat(2, 1fr);
 `
 const Column = styled.div`
-  background: #fff;
+  background: #65776a;
   height: 100vh;
   overflow: scroll;
 
@@ -40,7 +40,7 @@ const LinkWrapper = styled.div`
   border: 1px solid grey;
   border-radius: 4px;
   width: 130px;
-  margin: 18px 0 0 40px;
+  margin: 18px 0 0 48px;
   padding: 6px;
   background: #000;
   text-align: center;
@@ -168,7 +168,7 @@ const Park = (props) => {
       )
     } else {
       return (
-        <p>Just a sec..</p>
+        <h4>Just a sec..</h4>
       )
     }
   }
