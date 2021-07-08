@@ -54,7 +54,7 @@ const Park = (props) => {
         <Link to={`/parks/${props.attributes.park_code}`}>View Park</Link>
       </LinkWrapper>
       <ModalButton onClick={openModal}>I'm a Modal</ModalButton>
-      <Modal showModal={showModal} setShowModal={setShowModal}/> 
+      <Modal showModal={showModal} setShowModal={setShowModal}  name={props.attributes.name}/> 
     </Card>
   )
 }

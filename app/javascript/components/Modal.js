@@ -12,6 +12,7 @@ const Background = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 9;
 `
 
 const ModalWrapper = styled.div`
@@ -65,15 +66,15 @@ const CloseModalButton = styled(MdClose)`
     z-index: 10;
 `
 
-export const Modal = ({ showModal, setShowModal }) => {
+export const Modal = ({ showModal, setShowModal, name }) => {
     return (
         <>
             {showModal ? (
                 <Background>
                     <ModalWrapper showModal={showModal}>
-                        <ModalImg src={`https://source.unsplash.com/random`} alt="park" />
+                        <ModalImg src={`https://source.unsplash.com/500x400?/${name}`} alt="park" />
                         <ModalContent>
-                            <h1>Park Name</h1>
+                            <h1>{name}</h1>
                             <p>Park Content</p>
                             <button>Do something</button>
                         </ModalContent>
