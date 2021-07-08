@@ -82,7 +82,7 @@ export const Modal = ({ showModal, setShowModal, name }) => {
                 <Background>
                     <animated.div style={animation}>
                         <ModalWrapper showModal={showModal}>
-                            <ModalImg src={`https://source.unsplash.com/500x400?/${name},nature`} alt={`${name}`} />
+                            <ModalImg src={`https://source.unsplash.com/500x400?/${name}`} alt={`${name}`} />
                             <ModalContent>
                                 <h1>{name}</h1>
                                 <p>Park Content</p>
