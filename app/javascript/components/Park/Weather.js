@@ -15,11 +15,6 @@ const Section = styled.div`
   }
 `
 
-// const Map = ReactMapboxGl({
-//   accessToken:
-//     'pk.eyJ1IjoiY3Rib3lsZTYiLCJhIjoiY2txdHZ4bGNuMmV3YjJ1bzh1cHplMGUxZCJ9.G4IOtzu5WpTeBp2OAdwp7g'
-// });
-
 const Weather = (props) => {
   const { coord, main, wind, clouds, sys, name, timezone } = props.weather
 

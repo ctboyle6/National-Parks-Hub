@@ -38,12 +38,12 @@ const Column = styled.div`
 const Main = styled.div`
   padding-left: 50px;
 `
-
+// Mapbox
 const Map = ReactMapboxGl({
   accessToken:
-    'pk.eyJ1IjoiY3Rib3lsZTYiLCJhIjoiY2txdHZ4bGNuMmV3YjJ1bzh1cHplMGUxZCJ9.G4IOtzu5WpTeBp2OAdwp7g'
+  process.env.REACT_APP_MAPBOX_API_KEY
 });
-
+  
 const Park = (props) => {
   const dispatch = useDispatch();
   const park = useSelector((state) => state.park);
@@ -52,7 +52,7 @@ const Park = (props) => {
 
   const [loaded, setLoaded] = useState(false)
   const [review, setReview] = useState({})
-  const [ stateReviews, setStateReviews ] = useState([])
+  const [ stateReviews, setStateReviews ] = useState([]);
 
   useEffect(() => {
     fetchData();
