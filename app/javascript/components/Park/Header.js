@@ -4,6 +4,13 @@ import styled from 'styled-components'
 const Wrapper = styled.div`
   padding: 50px 100px 50px 0;
   font-size: 30px;
+
+  h1 {
+    color: #65776a;
+    font-family: 'Lora', serif;
+    font-size: 64px;
+    font-weight: bold;
+  }
 `
 
 const TotalReviews = styled.div`
