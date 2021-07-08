@@ -1,4 +1,5 @@
 import React, { useRef } from 'react'
+import { BrowserRouter as Router, Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { MdClose } from 'react-icons/md'
 import { useSpring, animated } from 'react-spring'
@@ -104,6 +105,8 @@ export const Modal = ({ showModal, setShowModal, name, park_code, weather }) => 
                             <ModalContent>
                                 <h2>{name}</h2>
                                 <Weather weather={weather}/>
+                                
+                                <Link to={`/parks/${park_code}`}>Go to Park</Link>
                             </ModalContent>
                             <CloseModalButton aria-label='Close Modal' onClick={() => setShowModal(prev => !prev)} />
                         </ModalWrapper>
