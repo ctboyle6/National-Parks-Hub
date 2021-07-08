@@ -52,7 +52,7 @@ const ModalContent = styled.div`
     }
 `
 
-const ModalCloseButton = styled(MdClose)`
+const CloseModalButton = styled(MdClose)`
     cursor: pointer;
     position: absolute;
     top: 20px;
@@ -65,6 +65,20 @@ const ModalCloseButton = styled(MdClose)`
 
 export const Modal = ({ showModal, setShowModal }) => {
     return (
-        <>{showModal ? <div>Modal</div> : null}</>    
+        <>
+            {showModal ? (
+                <Background>
+                    <ModalWrapper showModal={showModal}>
+                        <ModalImg src={`https://source.unsplash.com/random`} alt="park" />
+                        <ModalContent>
+                            <h1>Park Name</h1>
+                            <p>Park Content</p>
+                            <button>Do something</button>
+                        </ModalContent>
+                        <CloseModalButton aria-label='Close Modal' onClick={() => setShowModal(prev => !prev)} />
+                    </ModalWrapper>
+                </Background>
+            ) : null}
+        </>    
     )
 }
