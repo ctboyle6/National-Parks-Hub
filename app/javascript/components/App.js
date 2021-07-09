@@ -3,6 +3,8 @@ import { Route, Switch } from 'react-router-dom'
 import Parks from './Parks/Parks'
 import Park from './Park/Park'
 
+require('dotenv').config()
+
 const App = () => {
   return (
     <Switch>
