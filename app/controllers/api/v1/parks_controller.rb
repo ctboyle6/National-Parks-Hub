@@ -11,9 +11,13 @@ module Api
       end
 
       def show
-        park = Park.find_by(park_code: params[:park_code])
+        if user_signed_in?
+          park = Park.find_by(park_code: params[:park_code])
 
-        render json: ParkSerializer.new(park, options).serialized_json
+          render json: ParkSerializer.new(park, options).serialized_json
+        else
+          render json: {}, status: 401
+        end
       end
 
       # def create

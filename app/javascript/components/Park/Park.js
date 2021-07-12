@@ -55,6 +55,16 @@ const Main = styled.div`
   padding-left: 50px;
   margin-right: 32px;
 `
+
+const LoadingWrapper = styled.div`
+  text-align: center;
+  margin: auto;
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;
+  transform: translate(100%, 200%);
+`
+
 // Mapbox
 const Map = ReactMapboxGl({
   accessToken:
@@ -169,7 +179,9 @@ const Park = (props) => {
       )
     } else {
       return (
-        <h4>Just a sec..</h4>
+        <LoadingWrapper>
+          <h4>Just a sec..</h4>
+        </LoadingWrapper>
       )
     }
   }
