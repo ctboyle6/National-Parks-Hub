@@ -78,9 +78,9 @@ const Park = (props) => {
   const park = useSelector((state) => state.park);
   let reviews = useSelector((state) => state.reviews.reviews);
   const weather = useSelector((state) => state.park.weather);
-  const currentUser = useSelector((state) => state.user);
+  const currentUser = useSelector((state) => state.user.user);
 
-  const [loaded, setLoaded] = useState(false)
+  // const [loaded, setLoaded] = useState(false)
   const [review, setReview] = useState({})
   const [ stateReviews, setStateReviews ] = useState([]);
 
@@ -179,6 +179,12 @@ const Park = (props) => {
             />
           </Column>
         </Fragment>
+      )
+    } if (currentUser === null) {
+      return (
+        <LinkWrapper>
+          <Link to="/users/sign_in">Please sign in</Link>
+        </LinkWrapper>
       )
     } else {
       return (
