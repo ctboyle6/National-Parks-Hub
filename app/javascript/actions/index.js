@@ -95,19 +95,19 @@ export const createReview = (park_code, park_id, title, description, rating) => 
 export const fetchUser = () => async (dispatch) => {
     try {
       dispatch({
-        type: FETCH_USER_LOADING,
+        type: 'FETCH_USER_LOADING',
       });
   
       const user = await root.getAttribute("data-user");
       const userJson = await JSON.parse(user);
   
       dispatch({
-        type: FETCH_USER_SUCCESS,
+        type: 'FETCH_USER_SUCCESS',
         payload: userJson,
       });
     } catch (error) {
       dispatch({
-        type: FETCH_USER_FAILED,
+        type: 'FETCH_USER_FAILED',
       });
     }
   };
