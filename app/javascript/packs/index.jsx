@@ -33,6 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
         <Route path="/" component={App}/>
       </Router>
     </Provider>,
-    document.body.appendChild(document.createElement('div')),
+    document.getElementById('root'),
   )
 })
