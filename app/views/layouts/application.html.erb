@@ -15,6 +15,7 @@
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
-    <%#= yield %>
+    <%= yield %>
+    <div id="root" data-user="<%= current_user.to_json %>"></div>
   </body>
 </html>

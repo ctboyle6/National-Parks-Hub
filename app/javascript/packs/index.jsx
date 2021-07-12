@@ -11,6 +11,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 // Redux
 import { Provider } from 'react-redux'
 import { createStore, combineReducers, applyMiddleware } from 'redux'
+import userReducer from '../reducers/user_reducer'
 import parksReducer  from '../reducers/parks_reducer'
 import parkReducer from '../reducers/park_reducer'
 import reviewsReducer from '../reducers/reviews_reducer'
@@ -19,6 +20,7 @@ import reduxPromise from 'redux-promise'
 import thunk from 'redux-thunk'
 
 const reducers = combineReducers({
+  user: userReducer,
   parks: parksReducer,
   park: parkReducer,
   reviews: reviewsReducer
@@ -33,6 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
         <Route path="/" component={App}/>
       </Router>
     </Provider>,
-    document.body.appendChild(document.createElement('div')),
+    document.getElementById('root'),
   )
 })

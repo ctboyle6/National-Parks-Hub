@@ -1,7 +1,8 @@
 module Api
   module V1
     class ParksController < ApplicationController
-      skip_before_action :authenticate_user!, only: %i[index show]
+      skip_before_action :authenticate_user!, only: %i[index]
+      before_action :authenticate_user!, only: %i[show]
       
       def index
         parks = Park.all
@@ -10,9 +11,13 @@ module Api
       end
 
       def show
-        park = Park.find_by(park_code: params[:park_code])
+        if user_signed_in?
+          park = Park.find_by(park_code: params[:park_code])
 
-        render json: ParkSerializer.new(park, options).serialized_json
+          render json: ParkSerializer.new(park, options).serialized_json
+        else
+          render json: {}, status: 401
+        end
       end
 
       # def create

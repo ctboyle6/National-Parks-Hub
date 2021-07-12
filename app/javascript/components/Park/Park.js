@@ -10,6 +10,7 @@ import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 // Redux
+import { fetchUser } from '../../actions'
 import { fetchPark } from '../../actions'
 import { fetchReviews } from '../../actions'
 import { createReview } from '../../actions'
@@ -55,6 +56,16 @@ const Main = styled.div`
   padding-left: 50px;
   margin-right: 32px;
 `
+
+const LoadingWrapper = styled.div`
+  text-align: center;
+  margin: auto;
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;
+  transform: translate(100%, 200%);
+`
+
 // Mapbox
 const Map = ReactMapboxGl({
   accessToken:
@@ -67,8 +78,9 @@ const Park = (props) => {
   const park = useSelector((state) => state.park);
   let reviews = useSelector((state) => state.reviews.reviews);
   const weather = useSelector((state) => state.park.weather);
+  const currentUser = useSelector((state) => state.user.user);
 
-  const [loaded, setLoaded] = useState(false)
+  // const [loaded, setLoaded] = useState(false)
   const [review, setReview] = useState({})
   const [ stateReviews, setStateReviews ] = useState([]);
 
@@ -85,6 +97,7 @@ const Park = (props) => {
   const fetchData = () => {
     dispatch(fetchPark(props.match.params.park_code));
     dispatch(fetchReviews(props.match.params.park_code));
+    dispatch(fetchUser());
   }
 
   // -- BEGIN REVIEWS --
@@ -167,9 +180,17 @@ const Park = (props) => {
           </Column>
         </Fragment>
       )
+    } if (currentUser === null) {
+      return (
+        <LinkWrapper>
+          <Link to="/users/sign_in">Please sign in</Link>
+        </LinkWrapper>
+      )
     } else {
       return (
-        <h4>Just a sec..</h4>
+        <LoadingWrapper>
+          <h4>Just a sec..</h4>
+        </LoadingWrapper>
       )
     }
   }
