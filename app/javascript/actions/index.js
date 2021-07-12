@@ -1,6 +1,7 @@
 import Axios from 'axios';
 import { getWeather } from './getWeather';
 
+// Parks
 export const fetchParks = () => async (dispatch) => {
     try {
         dispatch({
@@ -20,6 +21,7 @@ export const fetchParks = () => async (dispatch) => {
     }
 }
 
+// Park
 export const fetchPark = (park_code) => async (dispatch) => {
     try {
         dispatch({
@@ -43,6 +45,7 @@ export const fetchPark = (park_code) => async (dispatch) => {
     }
 }
 
+// Reviews
 export const fetchReviews = (park_code) => async (dispatch) => {
     try {
         dispatch({
@@ -87,3 +90,24 @@ export const createReview = (park_code, park_id, title, description, rating) => 
         });
     }
 };
+
+// User
+export const fetchUser = () => async (dispatch) => {
+    try {
+      dispatch({
+        type: FETCH_USER_LOADING,
+      });
+  
+      const user = await root.getAttribute("data-user");
+      const userJson = await JSON.parse(user);
+  
+      dispatch({
+        type: FETCH_USER_SUCCESS,
+        payload: userJson,
+      });
+    } catch (error) {
+      dispatch({
+        type: FETCH_USER_FAILED,
+      });
+    }
+  };
