@@ -10,6 +10,7 @@ import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 // Redux
+import { fetchUser } from '../../actions'
 import { fetchPark } from '../../actions'
 import { fetchReviews } from '../../actions'
 import { createReview } from '../../actions'
@@ -77,6 +78,7 @@ const Park = (props) => {
   const park = useSelector((state) => state.park);
   let reviews = useSelector((state) => state.reviews.reviews);
   const weather = useSelector((state) => state.park.weather);
+  const currentUser = useSelector((state) => state.user);
 
   const [loaded, setLoaded] = useState(false)
   const [review, setReview] = useState({})
@@ -95,6 +97,7 @@ const Park = (props) => {
   const fetchData = () => {
     dispatch(fetchPark(props.match.params.park_code));
     dispatch(fetchReviews(props.match.params.park_code));
+    dispatch(fetchUser());
   }
 
   // -- BEGIN REVIEWS --
