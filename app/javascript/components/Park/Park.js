@@ -52,6 +52,24 @@ const LinkWrapper = styled.div`
   }
 `
 
+const SessionButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  background: #65776a;
+  transform: translateX(50%);
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+  border-radius: 2px;
+
+  div {
+    width: 360px;
+    margin: 0 auto;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+    border-radius: 2px;
+  }
+`
+
 const Main = styled.div`
   padding-left: 50px;
   margin-right: 32px;
@@ -182,9 +200,11 @@ const Park = (props) => {
       )
     } if (currentUser === null) {
       return (
-        <LinkWrapper>
-          <Link to="/users/sign_in">Please sign in</Link>
-        </LinkWrapper>
+        <SessionButtonContainer>
+          <LinkWrapper>
+            <Link to="/users/sign_in">Please sign in to see park and leave a review</Link>
+          </LinkWrapper>
+        </SessionButtonContainer>
       )
     } else {
       return (
