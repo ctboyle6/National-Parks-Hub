@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
-  # devise_scope :user do 
+  devise_scope :user do 
   #   get "/users/sign_out", to: "devise/sessions#destroy"
-  #   get "/guest/sign_in", to: "sessions#guest"
-  # end
+    get "/guest/sign_in", to: "sessions#guest"
+  end
 
   root 'pages#index'
 
