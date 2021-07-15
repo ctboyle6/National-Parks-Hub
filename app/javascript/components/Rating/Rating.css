@@ -1,3 +1,5 @@
+/* @import url("https://use.fontawesome.com/releases/v5.13.0/css/all.css");
+
 .star-wrapper {
   position: relative;
   display: inline-block;
@@ -14,6 +16,35 @@
 
 .star-wrapper:before, .stars:before {
   font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  content: "\f005 \0020 \f005 \0020 \f005 \0020 \f005 \0020 \f005";
+  font-weight: bold;
+  content: '\f005 \0020 \f005 \0020 \f005 \0020 \f005 \0020 \f005';
+} */
+
+.rating {
+  display: inline-block;
+  unicode-bidi: bidi-override;
+  color: #888888;
+  font-size: 24px;
+  height: 25px;
+  width: auto;
+  margin: 0;
+  position: relative;
+  padding: 0;
+}
+
+.rating-upper {
+  color: #E9C635;
+  padding: 0;
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.rating-lower {
+  padding: 0;
+  display: flex;
+  z-index: 0;
 }
