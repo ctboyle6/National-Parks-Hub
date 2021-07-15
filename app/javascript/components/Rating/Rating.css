@@ -12,7 +12,7 @@
   color: #E9C635;
 }
 
-.star-wrapper::before, .stars::before {
+.star-wrapper:before, .stars:before {
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
   content: "\f005 \0020 \f005 \0020 \f005 \0020 \f005 \0020 \f005";
