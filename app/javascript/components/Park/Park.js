@@ -76,10 +76,19 @@ const Main = styled.div`
 `
 
 const LoadingWrapper = styled.div`
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: auto;
   width: 50%;
-  border: 3px solid green;
+  height: 100px;
+  background: #65776a;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+  border-radius: 2px;
+  padding: 10px;
+  transform: translate(0%, 200%);
+  color: #fff;
+  font-weight: bold;
   padding: 10px;
   transform: translate(100%, 200%);
 `

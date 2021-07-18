@@ -49,6 +49,22 @@ const SearchBar = styled.div`
   }
 `
 
+const LoadingWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  width: 50%;
+  height: 100px;
+  background: #65776a;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+  border-radius: 2px;
+  padding: 10px;
+  transform: translate(0%, 200%);
+  color: #fff;
+  font-weight: bold;
+`
+
 const Parks = () => {
   const dispatch = useDispatch();
   const parks = useSelector((state) => state.parks.parks);
@@ -79,6 +95,12 @@ const Parks = () => {
           />
         )
       })
+    } else {
+      return (
+        <LoadingWrapper>
+          <h4>Just a sec..</h4>
+        </LoadingWrapper>
+      )
     }
   }
 
