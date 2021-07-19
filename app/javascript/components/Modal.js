@@ -2,7 +2,6 @@ import React, { useRef } from 'react'
 import { BrowserRouter as Router, Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { MdClose } from 'react-icons/md'
-// import { useSpring, animated } from 'react-spring'
 import Weather from './Park/Weather'
 
 
@@ -96,14 +95,6 @@ const CloseModalButton = styled(MdClose)`
 export const Modal = ({ showModal, setShowModal, name, park_code, weather }) => {
     const modalRef = useRef();
     
-    // const animation = useSpring({
-    //     config: {
-    //         duration: 250
-    //     },
-    //     opacity: showModal ? 1 : 0,
-    //     transform: showModal ? `translateY(0%)` : `translateY(-100%)`
-    // })
-
     const closeModal = (event) => {
         if (modalRef.current === event.target) {
             setShowModal(false);
@@ -114,21 +105,19 @@ export const Modal = ({ showModal, setShowModal, name, park_code, weather }) => 
         <>
             {showModal && weather ? (
                 <Background ref={modalRef} onClick={closeModal}>
-                    {/* <animated.div style={animation}> */}
-                        <ModalWrapper showModal={showModal}>
-                            <ModalImg src={`https://source.unsplash.com/600x500?/${name}`} alt={`${name}`} />
-                            <ModalContent>
-                                <h2>{name}</h2>
-                                <Weather weather={weather}/>
-                                <LinkWrapper>
-                                    <Link to={`/parks/${park_code}`}>Go to Park</Link>
-                                </LinkWrapper>
-                            </ModalContent>
-                            <CloseModalButton aria-label='Close Modal' onClick={() => setShowModal(prev => !prev)} />
-                        </ModalWrapper>
-                    {/* </animated.div> */}
+                    <ModalWrapper showModal={showModal}>
+                        <ModalImg src={`https://source.unsplash.com/600x500?/${name}`} alt={`${name}`} />
+                        <ModalContent>
+                            <h2>{name}</h2>
+                            <Weather weather={weather}/>
+                            <LinkWrapper>
+                                <Link to={`/parks/${park_code}`}>Go to Park</Link>
+                            </LinkWrapper>
+                        </ModalContent>
+                        <CloseModalButton aria-label='Close Modal' onClick={() => setShowModal(prev => !prev)} />
+                    </ModalWrapper>
                 </Background>
-            ) : null}
+            ) : null }
         </>    
     )
 }
