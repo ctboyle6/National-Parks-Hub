@@ -26,7 +26,7 @@ module Api
       end
 
       def destroy
-        review = Review.find_by(params[:id])
+        review = Review.find(params[:id])
 
         if review.destroy
           flash[:success] = 'Review was successfully deleted'

@@ -39,11 +39,10 @@ const Review = (props) => {
   const dispatch = useDispatch();
 
   const {rating, title, description} = props.attributes
-  const { review_id } = props.reviewId
 
   const handleDelete = () => {
-    // console.log(props)
-    dispatch(deleteReview(reviewId))
+    // console.log(props.reviewId)
+    dispatch(deleteReview(props.reviewId))
     // debugger
   }
 
