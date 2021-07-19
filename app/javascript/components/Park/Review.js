@@ -41,7 +41,7 @@ const Review = (props) => {
       </RatingContainer>
       <Title>{title}</Title>
       <Description>{description}</Description>
-      <DeleteButton><i class="fas fa-trash-alt"></i></DeleteButton>
+      <DeleteButton><i className="fas fa-trash-alt"></i></DeleteButton>
     </Card>
   )
 }
