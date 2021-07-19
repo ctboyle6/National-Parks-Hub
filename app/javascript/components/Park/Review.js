@@ -38,10 +38,22 @@ const DeleteButton = styled.div`
 const Review = (props) => {
   const dispatch = useDispatch();
 
-  const {rating, title, description} = props.attributes
+  const {rating, title, description, user_id} = props.attributes
 
   const handleDelete = () => {
     dispatch(deleteReview(props.reviewId))
+  }
+
+  const showDeleteButton = () => {
+    if (props.currentUser.id === user_id) {
+      return (
+        <DeleteButton
+          onClick={handleDelete}
+        >
+          <i className="fas fa-trash-alt"></i>
+        </DeleteButton>
+      )
+    }
   }
 
   return (
@@ -51,9 +63,7 @@ const Review = (props) => {
       </RatingContainer>
       <Title>{title}</Title>
       <Description>{description}</Description>
-      <DeleteButton
-        onClick={handleDelete}
-      ><i className="fas fa-trash-alt"></i></DeleteButton>
+      {showDeleteButton()}
     </Card>
   )
 }
