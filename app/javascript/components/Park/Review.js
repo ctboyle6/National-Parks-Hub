@@ -41,9 +41,7 @@ const Review = (props) => {
   const {rating, title, description} = props.attributes
 
   const handleDelete = () => {
-    // console.log(props.reviewId)
     dispatch(deleteReview(props.reviewId))
-    // debugger
   }
 
   return (
