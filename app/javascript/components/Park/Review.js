@@ -26,6 +26,11 @@ const Description = styled.div`
   font-size: 14px;
 `
 
+const DeleteButton = styled.div`
+  text-align: end;
+  cursor: pointer;
+`
+
 const Review = (props) => {
   const {rating, title, description} = props.attributes
 
@@ -36,6 +41,7 @@ const Review = (props) => {
       </RatingContainer>
       <Title>{title}</Title>
       <Description>{description}</Description>
+      <DeleteButton><i class="fas fa-trash-alt"></i></DeleteButton>
     </Card>
   )
 }
