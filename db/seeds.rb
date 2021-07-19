@@ -1,11 +1,13 @@
 require 'csv'
 
 # tear down
-puts "Clearing parks.."
+puts "Clearing parks, reviews, users.."
 
 Park.destroy_all
+Review.destroy_all
+User.destroy_all
 
-puts "Parks cleared."
+puts "All cleared."
 
 
 #run db:seed from main project folder
@@ -32,6 +34,12 @@ end
 
 puts "Parks loaded."
 
+puts "creating guest user"
+
+User.create(email: "guest@gmail.com", password: "guest123")
+
+puts "guest account created"
+
 puts "Adding a few reviews.."
 
 reviews = Review.create([
@@ -39,13 +47,15 @@ reviews = Review.create([
     title: "Great trip",
     description: "This place had everything to offer.",
     rating: 5,
-    park: Park.first
+    park: Park.first,
+    user: User.first
   },
   {
     title: "Worst park",
     description: "This is hell",
     rating: 1,
-    park: Park.first
+    park: Park.first,
+    user: User.first
   },
 
 ])

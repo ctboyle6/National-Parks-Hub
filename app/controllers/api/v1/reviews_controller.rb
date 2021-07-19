@@ -17,6 +17,7 @@ module Api
       def create
         review = Review.new(review_params)
         review.park = park
+        review.user = current_user
 
         if review.save!
           render json: ReviewSerializer.new(review).serialized_json
@@ -26,11 +27,13 @@ module Api
       end
 
       def destroy
-        review = Review.find_by(params[:id])
+        review = Review.find(params[:id])
 
         if review.destroy
+          flash[:success] = 'Review was successfully deleted'
           head :no_content
         else
+          flash[:error] = 'Something went wrong'
           render json: { error: review.errors.messages }, status: 422
         end
       end
@@ -42,7 +45,7 @@ module Api
       end
 
       def review_params
-        params.require(:review).permit(:title, :description, :rating, :park_id)
+        params.require(:review).permit(:title, :description, :rating, :park_id, :user_id)
       end
     end
   end

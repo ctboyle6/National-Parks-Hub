@@ -44,6 +44,31 @@ const reviewsReducer = (state = [], action) => {
                 errorMessage: "Unable to create review"
             };
 
+        // DELETE
+        case 'DELETE_REVIEW_LOADING':
+            return {
+                ...state,
+                loading: true,
+                errorMessage: "",
+            };
+      
+        case 'DELETE_REVIEW_SUCCESS':
+            return {
+                ...state,
+                loading: false,
+                reviews: state.reviews.filter(
+                (review) => review.id != action.payload.id
+                ),
+                errorMessage: "",
+            };
+    
+        case 'DELETE_REVIEW_FAILED':
+            return {
+                ...state,
+                loading: false,
+                errorMessage: "Unable to delete review",
+            };
+
         default:
             return state;
     }

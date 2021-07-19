@@ -91,6 +91,28 @@ export const createReview = (park_code, park_id, title, description, rating) => 
     }
 };
 
+export const deleteReview = (reviewId) => async (dispatch) => {
+    try {
+        dispatch({
+            type: 'DELETE_REVIEW_LOADING',
+        });
+
+        const response = await Axios.delete(
+            `/api/v1/reviews/${reviewId}`,
+            { review: { id: reviewId } }
+        );
+
+        dispatch({
+            type: 'DELETE_REVIEW_SUCCESS',
+            payload: response.config.review,
+        });
+    } catch (error) {
+        dispatch({
+            type: 'DELETE_REVIEW_FAILED',
+        });
+    }
+};
+
 // User
 export const fetchUser = () => async (dispatch) => {
     try {
