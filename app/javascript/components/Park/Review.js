@@ -2,6 +2,10 @@ import React from 'react'
 import Rating from '../Rating/Rating'
 import styled from 'styled-components'
 
+// Redux
+import { useDispatch } from 'react-redux'
+import { deleteReview } from '../../actions'
+
 const Card = styled.div`
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 8px;
@@ -32,7 +36,16 @@ const DeleteButton = styled.div`
 `
 
 const Review = (props) => {
+  const dispatch = useDispatch();
+
   const {rating, title, description} = props.attributes
+  const { review_id } = props.reviewId
+
+  const handleDelete = () => {
+    // console.log(props)
+    dispatch(deleteReview(reviewId))
+    // debugger
+  }
 
   return (
     <Card>
@@ -41,7 +54,9 @@ const Review = (props) => {
       </RatingContainer>
       <Title>{title}</Title>
       <Description>{description}</Description>
-      <DeleteButton><i className="fas fa-trash-alt"></i></DeleteButton>
+      <DeleteButton
+        onClick={handleDelete}
+      ><i className="fas fa-trash-alt"></i></DeleteButton>
     </Card>
   )
 }

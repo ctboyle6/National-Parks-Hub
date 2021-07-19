@@ -91,15 +91,15 @@ export const createReview = (park_code, park_id, title, description, rating) => 
     }
 };
 
-export const deleteReview = (park_id, review_id) => async (dispatch) => {
+export const deleteReview = (reviewId) => async (dispatch) => {
     try {
         dispatch({
             type: 'DELETE_REVIEW_LOADING',
         });
 
         const response = await Axios.delete(
-            `/api/v1/parks/${park_id}/reviews/${review_id}`,
-            { review: { id: review_id } }
+            `/api/v1/reviews/${reviewId}`,
+            { review: { id: reviewId } }
         );
 
         dispatch({

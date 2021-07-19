@@ -45,14 +45,14 @@ const reviewsReducer = (state = [], action) => {
             };
 
         // DELETE
-        case DELETE_REVIEW_LOADING:
+        case 'DELETE_REVIEW_LOADING':
             return {
                 ...state,
                 loading: true,
                 errorMessage: "",
             };
       
-        case DELETE_REVIEW_SUCCESS:
+        case 'DELETE_REVIEW_SUCCESS':
             return {
                 ...state,
                 loading: false,
@@ -62,7 +62,7 @@ const reviewsReducer = (state = [], action) => {
                 errorMessage: "",
             };
     
-        case DELETE_REVIEW_FAILED:
+        case 'DELETE_REVIEW_FAILED':
             return {
                 ...state,
                 loading: false,

@@ -158,6 +158,7 @@ const Park = (props) => {
           <Review
             key={index}
             attributes={review.attributes}
+            reviewId={review.id}
           />
         )
       })
