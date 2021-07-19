@@ -105,19 +105,19 @@ export const Modal = ({ showModal, setShowModal, name, park_code, weather }) => 
         <>
             {showModal && weather ? (
                 <Background ref={modalRef} onClick={closeModal}>
-                        <ModalWrapper showModal={showModal}>
-                            <ModalImg src={`https://source.unsplash.com/600x500?/${name}`} alt={`${name}`} />
-                            <ModalContent>
-                                <h2>{name}</h2>
-                                <Weather weather={weather}/>
-                                <LinkWrapper>
-                                    <Link to={`/parks/${park_code}`}>Go to Park</Link>
-                                </LinkWrapper>
-                            </ModalContent>
-                            <CloseModalButton aria-label='Close Modal' onClick={() => setShowModal(prev => !prev)} />
-                        </ModalWrapper>
+                    <ModalWrapper showModal={showModal}>
+                        <ModalImg src={`https://source.unsplash.com/600x500?/${name}`} alt={`${name}`} />
+                        <ModalContent>
+                            <h2>{name}</h2>
+                            <Weather weather={weather}/>
+                            <LinkWrapper>
+                                <Link to={`/parks/${park_code}`}>Go to Park</Link>
+                            </LinkWrapper>
+                        </ModalContent>
+                        <CloseModalButton aria-label='Close Modal' onClick={() => setShowModal(prev => !prev)} />
+                    </ModalWrapper>
                 </Background>
-            ) : null}
+            ) : null }
         </>    
     )
 }
