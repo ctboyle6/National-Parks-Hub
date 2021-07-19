@@ -29,8 +29,10 @@ module Api
         review = Review.find_by(params[:id])
 
         if review.destroy
+          flash[:success] = 'Review was successfully deleted'
           head :no_content
         else
+          flash[:error] = 'Something went wrong'
           render json: { error: review.errors.messages }, status: 422
         end
       end
