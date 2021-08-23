@@ -58,11 +58,11 @@ const Park = (props) => {
   }
 
   const addHighlight = (e) => {
-    e.currentTarget.style.transform = 'scale(1.04)'
+    e.currentTarget.style.boxShadow = '1px 1px 12px rgba(233, 175, 53, 1)'
   }
 
   const removeHighlight = (e) => {
-    e.currentTarget.style.transform = 'scale(1)'
+    e.currentTarget.style.boxShadow = '2px 2px 8px rgba(0, 0, 0, 0.6)'
   }
 
   return (
