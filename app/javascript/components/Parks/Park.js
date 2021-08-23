@@ -18,8 +18,6 @@ const Card = styled.div`
   min-height: 160px;
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
   border-radius: 2px;
-  transform: scale(0.98);
-  transition: transform 0.2s;
 `
 
 const ParkName = styled.div`
@@ -64,7 +62,7 @@ const Park = (props) => {
   }
 
   const removeHighlight = (e) => {
-    e.currentTarget.style.transform = 'scale(0.98)'
+    e.currentTarget.style.transform = 'scale(1)'
   }
 
   return (
