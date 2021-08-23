@@ -18,6 +18,10 @@ const Card = styled.div`
   min-height: 160px;
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
   border-radius: 2px;
+
+  &:hover {
+    box-shadow: 1px 1px 12px rgba(233, 175, 53, 1);
+  }
 `
 
 const ParkName = styled.div`
@@ -57,16 +61,8 @@ const Park = (props) => {
     setShowModal(prev => !prev)
   }
 
-  const addHighlight = (e) => {
-    e.currentTarget.style.boxShadow = '1px 1px 12px rgba(233, 175, 53, 1)'
-  }
-
-  const removeHighlight = (e) => {
-    e.currentTarget.style.boxShadow = '2px 2px 8px rgba(0, 0, 0, 0.6)'
-  }
-
   return (
-    <Card onMouseEnter={addHighlight} onMouseLeave={removeHighlight}>
+    <Card>
       <LinkWrapper>
         <Link to={`/parks/${props.attributes.park_code}`}>
           <ParkName>{props.attributes.name}</ParkName>
