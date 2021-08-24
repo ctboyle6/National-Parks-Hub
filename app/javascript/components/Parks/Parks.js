@@ -17,9 +17,11 @@ const Dashboard = styled.div`
 `
 
 const Header = styled.div`
-  padding: 60px 0px 10px 0px;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+  padding: 80px 0px 80px 0px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
                     url(${img});
+  background-position: fixed;
+  background-size: cover;
 
   h1 {
     font-family: 'Lora', serif;
