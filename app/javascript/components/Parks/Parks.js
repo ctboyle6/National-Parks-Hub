@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 import Park from './Park'
 import styled from 'styled-components'
 import ScrollButton from '../ScrollButton'
-import ClipLoader from "react-spinners/ClipLoader";
+import ClipLoader from "react-spinners/ClipLoader"
+import img from '../../../../app/assets/images/forrest.jpg'
 
 // Redux
 import { fetchParks } from '../../actions'
@@ -16,7 +17,11 @@ const Dashboard = styled.div`
 `
 
 const Header = styled.div`
-  padding: 60px 0px 10px 0px;
+  padding: 100px 0px 100px 0px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.45)),
+                    url(${img});
+  background-position: fixed;
+  background-size: cover;
 
   h1 {
     font-family: 'Lora', serif;
@@ -109,8 +114,8 @@ const Parks = () => {
     <Dashboard>
       <Header>
         <h1>National Parks Hub</h1>
+        <Subheader>Get out and hike!</Subheader>
       </Header>
-      <Subheader>Get out and hike!</Subheader>
       <SearchBar>
         <input 
           type="text"
