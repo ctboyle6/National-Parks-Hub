@@ -8,6 +8,7 @@ import Weather from './Weather'
 import styled from 'styled-components'
 import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
+import ClipLoader from "react-spinners/ClipLoader";
 
 // Redux
 import { fetchUser } from '../../actions'
@@ -220,7 +221,7 @@ const Park = (props) => {
     } else {
       return (
         <LoadingWrapper>
-          <h4>Just a sec..</h4>
+          <ClipLoader color={"#ffffff"} size={30} />
         </LoadingWrapper>
       )
     }
