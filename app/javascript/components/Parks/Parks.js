@@ -99,7 +99,7 @@ const Parks = () => {
     } else {
       return (
         <LoadingWrapper>
-          <ClipLoader color={"#ffffff"} size={30} />
+          <ClipLoader color={"#ffffff"} size={60} />
         </LoadingWrapper>
       )
     }
