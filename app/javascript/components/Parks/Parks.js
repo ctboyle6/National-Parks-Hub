@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Park from './Park'
 import styled from 'styled-components'
 import ScrollButton from '../ScrollButton'
+import ClipLoader from "react-spinners/ClipLoader";
 
 // Redux
 import { fetchParks } from '../../actions'
@@ -98,7 +99,7 @@ const Parks = () => {
     } else {
       return (
         <LoadingWrapper>
-          <h4>Just a sec..</h4>
+          <ClipLoader color={"#ffffff"} size={30} />
         </LoadingWrapper>
       )
     }
